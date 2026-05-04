@@ -1,4 +1,4 @@
-# Portofolio
+# Portfolio
 
 Modern personal portfolio website with a lightweight Three.js background and
 glassmorphism UI.

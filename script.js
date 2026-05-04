@@ -9,15 +9,21 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(0, 0, 10);
 
+const MOBILE_MAX_PIXEL_RATIO = 1.2;
+const DESKTOP_MAX_PIXEL_RATIO = 1.8;
+const getPixelRatio = () =>
+  Math.min(
+    window.devicePixelRatio,
+    window.innerWidth < 720 ? MOBILE_MAX_PIXEL_RATIO : DESKTOP_MAX_PIXEL_RATIO
+  );
+
 const renderer = new THREE.WebGLRenderer({
   canvas,
   alpha: true,
   antialias: true,
   powerPreference: "high-performance",
 });
-renderer.setPixelRatio(
-  Math.min(window.devicePixelRatio, window.innerWidth < 720 ? 1.2 : 1.8)
-);
+renderer.setPixelRatio(getPixelRatio());
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x0a0f1f, 0);
 
@@ -128,9 +134,7 @@ requestAnimationFrame(animate);
 const handleResize = () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, window.innerWidth < 720 ? 1.1 : 1.6)
-  );
+  renderer.setPixelRatio(getPixelRatio());
   renderer.setSize(window.innerWidth, window.innerHeight);
 };
 
