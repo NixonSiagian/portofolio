@@ -39,12 +39,12 @@ if (canvas && window.THREE) {
   renderer.setClearColor(COLOR_BG, 0);
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  const hemiLight = new THREE.HemisphereLight(0x8fb9ff, 0x0a0d1a, 0.8);
+  const hemisphereLight = new THREE.HemisphereLight(0x8fb9ff, 0x0a0d1a, 0.8);
   const keyLight = new THREE.PointLight(0x8dbbff, 1.1, 30);
   keyLight.position.set(6, 6, 8);
   const fillLight = new THREE.PointLight(0x7dd5c6, 0.6, 26);
   fillLight.position.set(-6, -4, 6);
-  scene.add(ambientLight, hemiLight, keyLight, fillLight);
+  scene.add(ambientLight, hemisphereLight, keyLight, fillLight);
 
   const group = new THREE.Group();
   scene.add(group);
