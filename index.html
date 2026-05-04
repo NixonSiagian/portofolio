@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aria Novak — Portfolio</title>
+    <title>Nixon Siagian — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,174 +17,193 @@
     <div class="grain" aria-hidden="true"></div>
 
     <header class="site-header">
-      <div class="logo">AN.</div>
+      <a class="logo" href="#top" aria-label="Nixon Siagian home">
+        <span class="logo-mark">NS</span>
+        <span class="logo-orb" aria-hidden="true"></span>
+      </a>
       <nav class="nav">
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#projects">Selected Work</a>
         <a href="#contact">Contact</a>
       </nav>
-      <span class="status-pill">Available · 2026</span>
+      <a class="nav-cta" href="#contact">Let’s Talk</a>
     </header>
 
     <main>
       <section class="hero" id="top">
         <div class="hero-content">
-          <p class="eyebrow">Product Designer · Creative Developer</p>
+          <p class="eyebrow">Developer · Programmer</p>
           <h1>
-            Aria Novak
-            <span>Builds quiet, immersive digital experiences.</span>
+            Nixon Siagian
+            <span>Crafting modern digital experiences</span>
           </h1>
           <p class="tagline">
-            I design premium interfaces and craft interactive 3D moments that
-            feel effortless, tactile, and unmistakably human.
+            Learning and building since 2020, I focus on premium web interfaces
+            that feel light, human, and quietly futuristic.
           </p>
           <div class="cta-row">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn ghost" href="#contact">Start a Project</a>
+            <a class="btn primary" href="#projects">View Work</a>
+            <a class="btn ghost" href="#contact">Contact</a>
           </div>
         </div>
-        <div class="hero-card glass-card">
-          <p class="card-label">Currently</p>
-          <h3>Designing a spatial commerce platform</h3>
-          <p class="card-copy">
-            Blending ambient storytelling with performance-first engineering for
-            web and mobile.
-          </p>
-          <div class="card-meta">
-            <div>
-              <span class="meta-title">Focus</span>
-              <span>UX, 3D, Motion</span>
+        <div class="hero-stack">
+          <div class="glass-card hero-card parallax-card reveal" data-parallax="18">
+            <p class="card-label">Currently</p>
+            <h3>Designing fluid UI systems with glass clarity.</h3>
+            <p class="card-copy">
+              Building immersive web experiences with careful motion and
+              performance-first engineering.
+            </p>
+            <div class="card-meta">
+              <div>
+                <span class="meta-title">Experience</span>
+                <span>Since 2020</span>
+              </div>
+              <div>
+                <span class="meta-title">Focus</span>
+                <span>3D · Web · Motion</span>
+              </div>
             </div>
-            <div>
-              <span class="meta-title">Location</span>
-              <span>Singapore</span>
-            </div>
+          </div>
+          <div
+            class="glass-card hero-card mini parallax-card reveal"
+            data-parallax="10"
+          >
+            <p class="card-label">Stack</p>
+            <p class="card-copy">CSS · JavaScript · C++ · Swift · Pawn · HTML</p>
           </div>
         </div>
       </section>
 
-      <section class="section" id="about">
-        <div class="section-heading">
+      <section class="section section-shift" id="about">
+        <div class="section-heading reveal">
           <p class="kicker">About</p>
-          <h2>Designing with clarity, building with intention.</h2>
+          <h2>Developer with a calm obsession for refined digital craft.</h2>
         </div>
-        <div class="section-content reveal">
-          <div class="glass-card about-card">
+        <div class="section-content">
+          <div class="glass-card about-card reveal">
             <p>
-              I help ambitious teams translate complex ideas into elegant,
-              high-performing digital products. My process combines product
-              strategy, visual storytelling, and lightweight 3D to create
-              memorable experiences without sacrificing speed.
+              I blend clean front-end engineering with a visual eye for glassy,
+              tactile UI. Since 2020, I’ve been exploring how thoughtful motion,
+              balanced typography, and modern code can turn simple products into
+              premium experiences.
             </p>
             <p class="muted">
-              Previously: Studio Meridian, Kairo Labs, and boutique startups
-              across APAC.
+              I’m driven by detail, clarity, and a love for building interfaces
+              that feel alive without being loud.
             </p>
           </div>
         </div>
       </section>
 
-      <section class="section" id="projects">
-        <div class="section-heading">
-          <p class="kicker">Projects</p>
-          <h2>Selected work that blends form and function.</h2>
+      <section class="section section-tight" id="skills">
+        <div class="section-heading reveal">
+          <p class="kicker">Skills</p>
+          <h2>Core technologies I shape into elegant experiences.</h2>
+        </div>
+        <div class="section-content">
+          <div class="glass-card skills-card reveal">
+            <div class="skills-cloud">
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">Swift</span>
+              <span class="skill-tag">Pawn</span>
+              <span class="skill-tag">HTML</span>
+            </div>
+            <p class="muted">
+              Lightweight animations and clean systems that stay fast on every
+              device.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-wide" id="projects">
+        <div class="section-heading reveal">
+          <p class="kicker">Selected Work</p>
+          <h2>Focused projects with clarity, motion, and precision.</h2>
         </div>
         <div class="section-content">
           <div class="projects-grid">
-            <article class="project-card glass-card reveal">
+            <a class="project-card glass-card reveal" href="#contact">
               <div>
-                <p class="project-title">Lucent Commerce</p>
+                <p class="project-title">Aurelia Studio</p>
                 <p class="project-desc">
-                  A cinematic shopping experience with adaptive UI and ambient
-                  motion.
+                  Liquid-glass landing experience for a boutique design studio.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span>Web</span>
+                <span>UI</span>
+                <span>Glass</span>
+              </div>
+            </a>
+            <a class="project-card glass-card reveal" href="#contact">
+              <div>
+                <p class="project-title">Drift Commerce</p>
+                <p class="project-desc">
+                  Minimal storefront with soft 3D motion and ambient lighting.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span>3D</span>
+                <span>Interaction</span>
+                <span>Front-end</span>
+              </div>
+            </a>
+            <a class="project-card glass-card reveal" href="#contact">
+              <div>
+                <p class="project-title">Solstice Dashboard</p>
+                <p class="project-desc">
+                  Calm data workspace for founders tracking product health.
                 </p>
               </div>
               <div class="tag-row">
                 <span>Product</span>
-                <span>3D</span>
+                <span>UX</span>
                 <span>Motion</span>
               </div>
-            </article>
-            <article class="project-card glass-card reveal">
+            </a>
+            <a class="project-card glass-card reveal" href="#contact">
               <div>
-                <p class="project-title">Mira Health</p>
+                <p class="project-title">Nova Lab</p>
                 <p class="project-desc">
-                  A calm, data-rich wellness dashboard for next-gen clinics.
+                  Experimental portfolio with bubbles, parallax, and quiet depth.
                 </p>
               </div>
               <div class="tag-row">
-                <span>UX</span>
-                <span>Visual</span>
-                <span>Web</span>
-              </div>
-            </article>
-            <article class="project-card glass-card reveal">
-              <div>
-                <p class="project-title">Orion Finance</p>
-                <p class="project-desc">
-                  Premium fintech interface with liquid-glass components and
-                  micro-interactions.
-                </p>
-              </div>
-              <div class="tag-row">
-                <span>Fintech</span>
-                <span>UI</span>
-                <span>Strategy</span>
-              </div>
-            </article>
-            <article class="project-card glass-card reveal">
-              <div>
-                <p class="project-title">Atlas Studio</p>
-                <p class="project-desc">
-                  A creative studio site with modular storytelling and soft
-                  gradients.
-                </p>
-              </div>
-              <div class="tag-row">
-                <span>Brand</span>
-                <span>Webflow</span>
+                <span>Creative</span>
                 <span>Story</span>
+                <span>Systems</span>
               </div>
-            </article>
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="section" id="skills">
-        <div class="section-heading">
-          <p class="kicker">Skills</p>
-          <h2>Balanced craft across design, code, and storytelling.</h2>
-        </div>
-        <div class="section-content reveal">
-          <div class="glass-card skills-card">
-            <div class="skill">
-              <span>Product Strategy</span>
-              <div class="bar"><span style="width: 88%"></span></div>
-            </div>
-            <div class="skill">
-              <span>UI / Visual Systems</span>
-              <div class="bar"><span style="width: 92%"></span></div>
-            </div>
-            <div class="skill">
-              <span>Three.js & Motion</span>
-              <div class="bar"><span style="width: 76%"></span></div>
-            </div>
-            <div class="skill">
-              <span>Prototyping</span>
-              <div class="bar"><span style="width: 84%"></span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="section-heading">
+      <section class="section section-shift contact-section" id="contact">
+        <div class="section-heading reveal">
           <p class="kicker">Contact</p>
-          <h2>Let’s create something quietly remarkable.</h2>
+          <h2>Let’s build something premium and quietly bold.</h2>
         </div>
-        <div class="section-content reveal">
-          <div class="glass-card contact-card">
+        <div class="section-content">
+          <div class="glass-card contact-card reveal">
+            <div class="contact-note">
+              <p>
+                Have an idea or a product to elevate? I’m open to collaborations
+                and thoughtful projects.
+              </p>
+              <div class="contact-links">
+                <a href="mailto:hello@nixonsiagian.dev">hello@nixonsiagian.dev</a>
+                <div class="socials">
+                  <a href="#">GitHub</a>
+                  <a href="#">LinkedIn</a>
+                  <a href="#">Instagram</a>
+                </div>
+              </div>
+            </div>
             <form>
               <label>
                 Name
@@ -199,26 +218,18 @@
                 <textarea
                   name="message"
                   rows="4"
-                  placeholder="Tell me about your vision."
+                  placeholder="Tell me what you're building."
                 ></textarea>
               </label>
-              <button class="btn primary" type="submit">Send Inquiry</button>
+              <button class="btn primary" type="submit">Send Message</button>
             </form>
-            <div class="contact-links">
-              <a href="mailto:hello@arianovak.design">hello@arianovak.design</a>
-              <div class="socials">
-                <a href="#">Behance</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">Dribbble</a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>© 2026 Aria Novak. Crafted with calm precision.</p>
+      <p>© 2026 Nixon Siagian. Crafted with intention.</p>
     </footer>
 
     <script src="https://unpkg.com/three@0.160.1/build/three.min.js"></script>
