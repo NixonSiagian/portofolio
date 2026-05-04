@@ -19,6 +19,16 @@
   --glass-border: rgba(255, 255, 255, 0.18);
   --shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
   --glow: rgba(133, 178, 255, 0.4);
+  --glass-highlight: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0.35),
+    transparent 55%
+  );
+  --project-glow: radial-gradient(
+    circle at top,
+    rgba(143, 185, 255, 0.35),
+    transparent 60%
+  );
 }
 
 html {
@@ -226,7 +236,7 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.35), transparent 55%);
+  background: var(--glass-highlight);
   opacity: 0.35;
   pointer-events: none;
 }
@@ -262,6 +272,11 @@ main {
 }
 
 .card-copy {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.card-tags {
   color: var(--muted);
   font-size: 0.98rem;
 }
@@ -392,7 +407,7 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(143, 185, 255, 0.35), transparent 60%);
+  background: var(--project-glow);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;

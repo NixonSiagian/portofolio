@@ -1,15 +1,16 @@
 const canvas = document.getElementById("bg-canvas");
 
 if (canvas && window.THREE) {
-  const COLOR_BG = 0x0a0d1a;
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(COLOR_BG, 6, 22);
   const MOBILE_BREAKPOINT = 720;
+  const COLOR_BG = 0x0a0d1a;
   const COLOR_ACCENT = 0x8fb9ff;
   const COLOR_MINT = 0x7fd5c6;
   const COLOR_LILAC = 0x9b9dff;
   const COLOR_BLUE_SOFT = 0x87b1ff;
   const BUBBLE_PALETTE = [COLOR_ACCENT, COLOR_MINT, COLOR_LILAC, COLOR_BLUE_SOFT];
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(COLOR_BG, 6, 22);
 
   const camera = new THREE.PerspectiveCamera(
     45,
