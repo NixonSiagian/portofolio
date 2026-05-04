@@ -3,6 +3,12 @@ const canvas = document.getElementById("bg-canvas");
 if (canvas && window.THREE) {
   const scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x0a0d1a, 6, 22);
+  const MOBILE_BREAKPOINT = 720;
+  const COLOR_ACCENT = 0x8fb9ff;
+  const COLOR_MINT = 0x7fd5c6;
+  const COLOR_LILAC = 0x9b9dff;
+  const COLOR_SKY = 0x87b1ff;
+  const BUBBLE_PALETTE = [COLOR_ACCENT, COLOR_MINT, COLOR_LILAC, COLOR_SKY];
 
   const camera = new THREE.PerspectiveCamera(
     45,
@@ -14,7 +20,7 @@ if (canvas && window.THREE) {
 
   const MOBILE_MAX_PIXEL_RATIO = 1.2;
   const DESKTOP_MAX_PIXEL_RATIO = 1.8;
-  const isMobile = () => window.innerWidth < 720;
+  const isMobile = () => window.innerWidth < MOBILE_BREAKPOINT;
   const getPixelRatio = () =>
     Math.min(
       window.devicePixelRatio,
@@ -47,7 +53,6 @@ if (canvas && window.THREE) {
   ).matches;
   const bubbles = [];
   const bubbleCount = isMobile() ? 8 : 16;
-  const palette = [0x8fb9ff, 0x7fd5c6, 0x9b9dff, 0x87b1ff];
 
   for (let i = 0; i < bubbleCount; i += 1) {
     const radius = 0.4 + Math.random() * 0.9;
@@ -57,7 +62,7 @@ if (canvas && window.THREE) {
       isMobile() ? 16 : 24
     );
     const material = new THREE.MeshPhysicalMaterial({
-      color: palette[i % palette.length],
+      color: BUBBLE_PALETTE[i % BUBBLE_PALETTE.length],
       roughness: 0.2,
       metalness: 0.15,
       transmission: 0.9,
@@ -66,7 +71,9 @@ if (canvas && window.THREE) {
       clearcoatRoughness: 0.2,
       transparent: true,
       opacity: 0.75,
-      emissive: new THREE.Color(palette[(i + 1) % palette.length]),
+      emissive: new THREE.Color(
+        BUBBLE_PALETTE[(i + 1) % BUBBLE_PALETTE.length]
+      ),
       emissiveIntensity: 0.08,
     });
 

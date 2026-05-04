@@ -107,7 +107,12 @@ main {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #87b8ff 40%, rgba(255, 255, 255, 0.1));
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff,
+    var(--accent) 40%,
+    rgba(255, 255, 255, 0.1)
+  );
   box-shadow: 0 0 18px rgba(137, 180, 255, 0.5);
 }
 
