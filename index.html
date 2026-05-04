@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aria Novak — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="logo">AN.</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <span class="status-pill">Available · 2026</span>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-content">
+          <p class="eyebrow">Product Designer · Creative Developer</p>
+          <h1>
+            Aria Novak
+            <span>Builds quiet, immersive digital experiences.</span>
+          </h1>
+          <p class="tagline">
+            I design premium interfaces and craft interactive 3D moments that
+            feel effortless, tactile, and unmistakably human.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Start a Project</a>
+          </div>
+        </div>
+        <div class="hero-card glass-card">
+          <p class="card-label">Currently</p>
+          <h3>Designing a spatial commerce platform</h3>
+          <p class="card-copy">
+            Blending ambient storytelling with performance-first engineering for
+            web and mobile.
+          </p>
+          <div class="card-meta">
+            <div>
+              <span class="meta-title">Focus</span>
+              <span>UX, 3D, Motion</span>
+            </div>
+            <div>
+              <span class="meta-title">Location</span>
+              <span>Singapore</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-heading">
+          <p class="kicker">About</p>
+          <h2>Designing with clarity, building with intention.</h2>
+        </div>
+        <div class="section-content reveal">
+          <div class="glass-card about-card">
+            <p>
+              I help ambitious teams translate complex ideas into elegant,
+              high-performing digital products. My process combines product
+              strategy, visual storytelling, and lightweight 3D to create
+              memorable experiences without sacrificing speed.
+            </p>
+            <p class="muted">
+              Previously: Studio Meridian, Kairo Labs, and boutique startups
+              across APAC.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="kicker">Projects</p>
+          <h2>Selected work that blends form and function.</h2>
+        </div>
+        <div class="section-content">
+          <div class="projects-grid">
+            <article class="project-card glass-card reveal">
+              <div>
+                <p class="project-title">Lucent Commerce</p>
+                <p class="project-desc">
+                  A cinematic shopping experience with adaptive UI and ambient
+                  motion.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span>Product</span>
+                <span>3D</span>
+                <span>Motion</span>
+              </div>
+            </article>
+            <article class="project-card glass-card reveal">
+              <div>
+                <p class="project-title">Mira Health</p>
+                <p class="project-desc">
+                  A calm, data-rich wellness dashboard for next-gen clinics.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span>UX</span>
+                <span>Visual</span>
+                <span>Web</span>
+              </div>
+            </article>
+            <article class="project-card glass-card reveal">
+              <div>
+                <p class="project-title">Orion Finance</p>
+                <p class="project-desc">
+                  Premium fintech interface with liquid-glass components and
+                  micro-interactions.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span>Fintech</span>
+                <span>UI</span>
+                <span>Strategy</span>
+              </div>
+            </article>
+            <article class="project-card glass-card reveal">
+              <div>
+                <p class="project-title">Atlas Studio</p>
+                <p class="project-desc">
+                  A creative studio site with modular storytelling and soft
+                  gradients.
+                </p>
+              </div>
+              <div class="tag-row">
+                <span>Brand</span>
+                <span>Webflow</span>
+                <span>Story</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section-heading">
+          <p class="kicker">Skills</p>
+          <h2>Balanced craft across design, code, and storytelling.</h2>
+        </div>
+        <div class="section-content reveal">
+          <div class="glass-card skills-card">
+            <div class="skill">
+              <span>Product Strategy</span>
+              <div class="bar"><span style="width: 88%"></span></div>
+            </div>
+            <div class="skill">
+              <span>UI / Visual Systems</span>
+              <div class="bar"><span style="width: 92%"></span></div>
+            </div>
+            <div class="skill">
+              <span>Three.js & Motion</span>
+              <div class="bar"><span style="width: 76%"></span></div>
+            </div>
+            <div class="skill">
+              <span>Prototyping</span>
+              <div class="bar"><span style="width: 84%"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-heading">
+          <p class="kicker">Contact</p>
+          <h2>Let’s create something quietly remarkable.</h2>
+        </div>
+        <div class="section-content reveal">
+          <div class="glass-card contact-card">
+            <form>
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@email.com" />
+              </label>
+              <label>
+                Project
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Tell me about your vision."
+                ></textarea>
+              </label>
+              <button class="btn primary" type="submit">Send Inquiry</button>
+            </form>
+            <div class="contact-links">
+              <a href="mailto:hello@arianovak.design">hello@arianovak.design</a>
+              <div class="socials">
+                <a href="#">Behance</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Dribbble</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Aria Novak. Crafted with calm precision.</p>
+    </footer>
+
+    <script src="https://unpkg.com/three@0.160.1/build/three.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
