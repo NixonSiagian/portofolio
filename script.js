@@ -1,8 +1,9 @@
 const canvas = document.getElementById("bg-canvas");
 
 if (canvas && window.THREE) {
+  const COLOR_BG = 0x0a0d1a;
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0x0a0d1a, 6, 22);
+  scene.fog = new THREE.Fog(COLOR_BG, 6, 22);
   const MOBILE_BREAKPOINT = 720;
   const COLOR_ACCENT = 0x8fb9ff;
   const COLOR_MINT = 0x7fd5c6;
@@ -35,7 +36,7 @@ if (canvas && window.THREE) {
   });
   renderer.setPixelRatio(getPixelRatio());
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x0a0d1a, 0);
+  renderer.setClearColor(COLOR_BG, 0);
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   const hemiLight = new THREE.HemisphereLight(0x8fb9ff, 0x0a0d1a, 0.8);
