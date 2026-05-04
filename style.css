@@ -310,7 +310,7 @@ main {
 
 .kicker {
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   font-size: 0.74rem;
   color: var(--accent);
 }

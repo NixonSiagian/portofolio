@@ -8,8 +8,8 @@ if (canvas && window.THREE) {
   const COLOR_ACCENT = 0x8fb9ff;
   const COLOR_MINT = 0x7fd5c6;
   const COLOR_LILAC = 0x9b9dff;
-  const COLOR_SKY = 0x87b1ff;
-  const BUBBLE_PALETTE = [COLOR_ACCENT, COLOR_MINT, COLOR_LILAC, COLOR_SKY];
+  const COLOR_BLUE_SOFT = 0x87b1ff;
+  const BUBBLE_PALETTE = [COLOR_ACCENT, COLOR_MINT, COLOR_LILAC, COLOR_BLUE_SOFT];
 
   const camera = new THREE.PerspectiveCamera(
     45,
