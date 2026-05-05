@@ -93,7 +93,7 @@ export default function Skills() {
               className="font-body text-sm leading-relaxed max-w-[180px]"
               style={{ color: 'var(--text-3)' }}
             >
-              Floating badges of the tools that keep my workflow precise and expressive.
+              Core programming languages and daily tools, shown as floating glass badges.
             </p>
           </motion.div>
 
