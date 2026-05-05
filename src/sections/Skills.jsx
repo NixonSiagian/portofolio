@@ -44,15 +44,15 @@ function SkillChip({ skill, index, inView }) {
       className="glass-chip"
       style={{
         marginLeft: `${skill.shift}px`,
-        borderColor: `${skill.color}30`,
-        boxShadow: `0 20px 45px rgba(0,0,0,0.32), 0 0 0 1px ${skill.color}25`,
+        borderColor: `${skill.color}28`,
+        boxShadow: `0 16px 40px rgba(0,0,0,0.28), 0 0 0 1px ${skill.color}18`,
         ...sizeStyle,
       }}
     >
       <div className="flex items-center gap-2">
         <span
-          className="w-2 h-2 rounded-full"
-          style={{ background: skill.color, boxShadow: `0 0 12px ${skill.color}` }}
+          className="w-2 h-2 rounded-full flex-shrink-0"
+          style={{ background: skill.color }}
         />
         <span className="font-display font-semibold" style={{ color: 'var(--text-1)' }}>
           {skill.name}

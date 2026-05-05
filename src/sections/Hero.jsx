@@ -22,21 +22,21 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-20">
-        <div className="grid lg:grid-cols-[1.08fr_0.92fr] items-center gap-12 lg:gap-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-28 pb-16 md:pb-20">
+        <div className="grid lg:grid-cols-[1.08fr_0.92fr] items-center gap-8 sm:gap-12 lg:gap-16">
           <div className="max-w-xl">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-7"
+              className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-5 md:mb-7"
             >
               <span
                 className="w-1.5 h-1.5 rounded-full animate-pulse"
                 style={{ background: 'var(--accent)' }}
               />
               <span
-                className="font-body text-[11px] tracking-[0.2em] uppercase"
+                className="font-body text-[10px] sm:text-[11px] tracking-[0.18em] uppercase"
                 style={{ color: 'var(--text-2)' }}
               >
                 Nixon Siagian — Developer / Programmer
@@ -47,9 +47,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-semibold leading-[1.02] mb-6"
+              className="font-display font-semibold leading-[1.02] mb-4 md:mb-6"
               style={{
-                fontSize: 'clamp(2.8rem, 6.8vw, 5.6rem)',
+                fontSize: 'clamp(2.4rem, 6.8vw, 5.6rem)',
                 color: 'var(--text-1)',
               }}
             >
@@ -60,8 +60,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="font-body text-sm tracking-[0.2em] uppercase mb-10"
-              style={{ color: 'var(--text-3)' }}
+              className="font-body text-sm tracking-[0.18em] uppercase mb-7 md:mb-10"
+              style={{ color: 'var(--text-2)' }}
             >
               Developer since 2020
             </motion.p>
@@ -103,7 +103,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[50vh] sm:h-[58vh] lg:h-[70vh] w-full"
+            className="relative h-[44vh] sm:h-[54vh] lg:h-[70vh] w-full"
           >
             <div
               className="absolute -inset-6 rounded-[36px] opacity-60 pointer-events-none"
