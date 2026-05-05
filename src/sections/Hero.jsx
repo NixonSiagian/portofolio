@@ -22,24 +22,27 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-28 pb-16 md:pb-20">
-        <div className="grid lg:grid-cols-[1.08fr_0.92fr] items-center gap-8 sm:gap-12 lg:gap-16">
-          <div className="max-w-xl">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-20 sm:pt-24 md:pt-28 pb-10 md:pb-20">
+        {/* Mobile: flex column (text → 3D). Desktop lg+: side-by-side grid */}
+        <div className="flex flex-col lg:grid lg:grid-cols-[1.08fr_0.92fr] items-center gap-6 sm:gap-10 lg:gap-16">
+
+          {/* ── Text column ── */}
+          <div className="max-w-xl w-full">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-5 md:mb-7"
+              className="inline-flex items-center gap-2.5 glass px-4 py-2 rounded-full mb-5 md:mb-7"
             >
               <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
+                className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
                 style={{ background: 'var(--accent)' }}
               />
               <span
                 className="font-body text-[10px] sm:text-[11px] tracking-[0.18em] uppercase"
                 style={{ color: 'var(--text-2)' }}
               >
-                Nixon Siagian — Developer / Programmer
+                Nixon Siagian — Developer
               </span>
             </motion.div>
 
@@ -47,37 +50,43 @@ export default function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-semibold leading-[1.02] mb-4 md:mb-6"
+              className="font-display font-semibold leading-[1.05] mb-3 md:mb-5"
               style={{
-                fontSize: 'clamp(2.4rem, 6.8vw, 5.6rem)',
+                fontSize: 'clamp(1.75rem, 7.5vw, 5.6rem)',
                 color: 'var(--text-1)',
               }}
             >
-              Crafting modern digital experiences
+              Crafting modern
+              <br />
+              digital experiences
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="font-body text-sm tracking-[0.18em] uppercase mb-7 md:mb-10"
-              style={{ color: 'var(--text-2)' }}
+              className="font-body text-sm leading-relaxed mb-6 md:mb-9"
+              style={{ color: 'var(--text-2)', maxWidth: '340px' }}
             >
-              Developer since 2020
+              Building across web, iOS, and systems since 2020 — with a focus on craft and clarity.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-3"
+              className="grid grid-cols-2 sm:flex gap-3"
             >
               <button
                 onClick={() =>
                   document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className="font-body font-medium text-sm px-7 py-3.5 rounded-2xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
-                style={{ background: 'var(--accent)', color: 'var(--bg)' }}
+                className="font-body font-medium text-sm px-6 py-3.5 rounded-2xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                style={{
+                  background: 'var(--accent)',
+                  color: 'var(--bg)',
+                  boxShadow: '0 4px 18px rgba(192,164,124,0.28)',
+                }}
               >
                 View Work
               </button>
@@ -85,7 +94,7 @@ export default function Hero() {
                 onClick={() =>
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
                 }
-                className="glass font-body font-medium text-sm px-7 py-3.5 rounded-2xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                className="glass font-body font-medium text-sm px-6 py-3.5 rounded-2xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
                 style={{ color: 'var(--text-1)' }}
                 onMouseEnter={e =>
                   (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')
@@ -99,11 +108,12 @@ export default function Hero() {
             </motion.div>
           </div>
 
+          {/* ── 3D Scene (below text on mobile, right column on desktop) ── */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[44vh] sm:h-[54vh] lg:h-[70vh] w-full"
+            className="relative h-[52vh] sm:h-[54vh] lg:h-[70vh] w-full"
           >
             <div
               className="absolute -inset-6 rounded-[36px] opacity-60 pointer-events-none"

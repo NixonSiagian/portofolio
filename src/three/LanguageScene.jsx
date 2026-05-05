@@ -1,5 +1,5 @@
 import { useRef, useMemo, useEffect, useState, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Environment, RoundedBox, Text } from '@react-three/drei'
 import { MathUtils } from 'three'
 
@@ -124,6 +124,19 @@ function OrbitalBadge({ label, color, orbitRadius, orbitElevation, initialAngle,
   )
 }
 
+// Camera field-of-view: wider on mobile so the tighter orbit fills the portrait canvas
+const MOBILE_FOV = 50
+const DESKTOP_FOV = 44
+
+function CameraSetup({ isMobile }) {
+  const { camera } = useThree()
+  useEffect(() => {
+    camera.fov = isMobile ? MOBILE_FOV : DESKTOP_FOV
+    camera.updateProjectionMatrix()
+  }, [isMobile, camera])
+  return null
+}
+
 function CameraRig({ mouse }) {
   useFrame(({ camera }) => {
     const tx = mouse.current.x * 0.38
@@ -155,7 +168,8 @@ function Scene({ mouse, isMobile }) {
       { label: 'Pawn',       color: '#7FD6A5', orbitRadius: OUTER_RADIUS, orbitElevation: OUTER_ELEVATION, initialAngle: TAU / 6 + TAU * 2 / 3, speed: OUTER_SPEED, badgeScale: 0.92 },
     ]
     if (isMobile) {
-      return all.slice(0, 4).map(b => ({ ...b, orbitRadius: b.orbitRadius * 0.78, badgeScale: (b.badgeScale || 1) * 0.78 }))
+      // Tighter orbits (72%) so scene fits portrait canvas; larger badges (88%) for readability
+      return all.slice(0, 4).map(b => ({ ...b, orbitRadius: b.orbitRadius * 0.72, badgeScale: (b.badgeScale || 1) * 0.88 }))
     }
     return all
   }, [isMobile])
@@ -168,6 +182,7 @@ function Scene({ mouse, isMobile }) {
       <pointLight position={[0, 0, 3]} intensity={0.45} color="#C0A47C" distance={7} decay={2} />
       {!isMobile && <Environment preset="city" />}
 
+      <CameraSetup isMobile={isMobile} />
       <CenterCore />
 
       {badges.map((b) => (

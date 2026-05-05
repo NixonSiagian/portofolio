@@ -4,7 +4,7 @@
 
 /* ─── Design Tokens ──────────────────────────────────── */
 :root {
-  --bg: #07070D;
+  --bg: #080B14;
   --bg-surface: rgba(255, 255, 255, 0.03);
   --bg-surface-hover: rgba(255, 255, 255, 0.055);
   --border: rgba(255, 255, 255, 0.07);
@@ -182,6 +182,18 @@ body {
   transform: translate(-50%, -50%);
   will-change: left, top;
   transition: width 0.25s, height 0.25s, border-color 0.25s;
+}
+
+/* ─── Mobile: reduce glass blur for performance and cleaner look ── */
+@media (max-width: 767px) {
+  .glass {
+    backdrop-filter: blur(8px) saturate(105%);
+    -webkit-backdrop-filter: blur(8px) saturate(105%);
+  }
+  .glass-card {
+    backdrop-filter: blur(8px) saturate(115%);
+    -webkit-backdrop-filter: blur(8px) saturate(115%);
+  }
 }
 
 /* ─── Animated underline ─────────────────────────────── */
