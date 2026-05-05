@@ -93,7 +93,7 @@ export default function Skills() {
               className="font-body text-sm leading-relaxed max-w-[180px]"
               style={{ color: 'var(--text-3)' }}
             >
-              Core programming languages and daily tools, shown as floating glass badges.
+              Languages and tools I rely on to build thoughtful, robust applications.
             </p>
           </motion.div>
 
