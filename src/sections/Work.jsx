@@ -64,11 +64,27 @@ function ProjectCard({ project, index, className = '' }) {
       initial={{ opacity: 0, y: 36 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -5, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
-      className={`glass relative overflow-hidden group ${className}`}
-      style={{ padding: project.featured ? '2.25rem 2.5rem' : '1.75rem 2rem' }}
+      whileHover={{
+        y: -8,
+        scale: 1.02,
+        boxShadow: '0 28px 70px rgba(0,0,0,0.45)',
+        borderColor: 'rgba(192,164,124,0.25)',
+        transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+      }}
+      className={`glass-card relative overflow-hidden group ${className}`}
+      style={{ padding: project.featured ? '2.35rem 2.6rem' : '1.85rem 2.1rem' }}
     >
-      {/* Hover radial glow */}
+      {/* Hover blur + glow */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'rgba(10, 12, 20, 0.2)',
+          backdropFilter: 'blur(14px) saturate(140%)',
+        }}
+      />
       <motion.div
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
@@ -132,12 +148,19 @@ function ProjectCard({ project, index, className = '' }) {
             </span>
           ))}
         </div>
-        <span
-          className="font-body text-xs flex-shrink-0"
-          style={{ color: 'var(--text-3)' }}
-        >
-          {project.year}
-        </span>
+        <div className="flex items-center gap-4">
+          <span
+            className="font-body text-xs flex-shrink-0"
+            style={{ color: 'var(--text-3)' }}
+          >
+            {project.year}
+          </span>
+          <span
+            className="font-body text-xs flex items-center gap-2 text-[color:var(--accent)] opacity-0 group-hover:opacity-100 transition-all duration-300"
+          >
+            View Project <ArrowIcon />
+          </span>
+        </div>
       </div>
     </motion.article>
   )
@@ -148,11 +171,11 @@ export default function Work() {
   const inView = useInView(ref, { once: true, margin: '-90px' })
 
   return (
-    <section id="work" className="section-pad" ref={ref}>
+    <section id="work" className="section-pad-roomy" ref={ref}>
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start mb-14">
+        <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start mb-16">
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -178,33 +201,28 @@ export default function Work() {
               color: 'var(--text-1)',
             }}
           >
-            Things I've built
+            Selected Work
           </motion.h2>
         </div>
 
-        {/* ── Asymmetric grid layout ── */}
-        <div className="space-y-4">
-
-          {/* Row 1: featured full-width */}
-          <ProjectCard project={PROJECTS[0]} index={0} />
-
-          {/* Row 2: two columns, intentionally uneven */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div className="md:col-span-3">
-              <ProjectCard project={PROJECTS[1]} index={1} className="h-full" />
+        <div className="space-y-10">
+          <div className="lg:flex lg:items-start gap-6">
+            <div className="lg:w-[58%]">
+              <ProjectCard project={PROJECTS[0]} index={0} />
             </div>
-            <div className="md:col-span-2">
-              <ProjectCard project={PROJECTS[2]} index={2} className="h-full" />
+            <div className="lg:w-[38%] lg:mt-10">
+              <ProjectCard project={PROJECTS[1]} index={1} />
             </div>
           </div>
 
-          {/* Row 3: offset card — left-aligned, not full width */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div className="md:col-start-2 md:col-span-3">
+          <div className="lg:flex lg:items-start gap-6">
+            <div className="lg:w-[40%] lg:ml-[8%]">
+              <ProjectCard project={PROJECTS[2]} index={2} />
+            </div>
+            <div className="lg:w-[48%] lg:mt-[-18px]">
               <ProjectCard project={PROJECTS[3]} index={3} />
             </div>
           </div>
-
         </div>
 
       </div>

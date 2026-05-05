@@ -36,7 +36,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-pad" ref={ref}>
+    <section id="contact" className="section-pad-tight" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
 
@@ -57,7 +57,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Main content */}
-          <div className="flex-1 max-w-2xl">
+          <div className="flex-1 max-w-2xl lg:ml-6">
 
             {/* Large heading */}
             <motion.h2

@@ -36,12 +36,12 @@ export default function About() {
           </motion.div>
 
           {/* Right: card */}
-          <div className="flex-1 max-w-2xl">
+          <div className="flex-1 max-w-2xl lg:ml-6">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="glass relative overflow-hidden p-8 md:p-10"
+              className="glass-card relative overflow-hidden p-8 md:p-10"
             >
               {/* Accent corner glow */}
               <div
