@@ -5,10 +5,10 @@ Premium personal portfolio built with React + Three.js (react-three-fiber).
 ## Tech Stack
 
 - **React 18** + Vite
-- **@react-three/fiber** + **@react-three/drei** — 3D glass bubbles
+- **@react-three/fiber** + **@react-three/drei** — floating 3D language badges
 - **Framer Motion** — scroll animations, micro-interactions
 - **Tailwind CSS** — utility styling
-- **DM Sans** + **Syne** — typography (via Google Fonts)
+- **Inter** — typography (via Google Fonts)
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ src/
 ├── components/
 │   └── Navbar.jsx       # Fixed nav with NS logo + mobile menu
 ├── three/
-│   └── BubbleScene.jsx  # react-three-fiber canvas with glass spheres
+│   └── LanguageScene.jsx # react-three-fiber canvas with floating language badges
 └── sections/
     ├── Hero.jsx         # Fullscreen hero with 3D background
     ├── About.jsx        # Glass card bio + stats
@@ -50,7 +50,7 @@ src/
 - **Projects** — edit `PROJECTS` array in `src/sections/Work.jsx`
 - **Skills** — edit `SKILLS` array in `src/sections/Skills.jsx`
 - **Email / socials** — edit `SOCIALS` in `src/sections/Contact.jsx`
-- **Bubble colors** — edit `bubbles` array in `src/three/BubbleScene.jsx`
+- **Language badges** — edit `badges` array in `src/three/LanguageScene.jsx`
 
 ## Performance Notes
 
