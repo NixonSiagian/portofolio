@@ -15,7 +15,10 @@
   --accent: #d5b98a;
   --accent-dim: rgba(213, 185, 138, 0.14);
   --accent-2: #7bb6ff;
+  --accent-3: #a78bfa;
   --radius: 18px;
+  --glow-accent: 0 0 30px rgba(213, 185, 138, 0.3), 0 0 60px rgba(213, 185, 138, 0.15);
+  --glow-blue: 0 0 30px rgba(123, 182, 255, 0.3), 0 0 60px rgba(123, 182, 255, 0.15);
 }
 
 /* ─── Base ───────────────────────────────────────────── */
@@ -200,3 +203,155 @@ body {
   transition: width 0.3s ease;
 }
 .link-underline:hover::after { width: 100%; }
+
+/* ─── Grid overlay ───────────────────────────────────── */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ─── Glow buttons ───────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #c4a572);
+  color: #05060b;
+  font-weight: 600;
+  transition: box-shadow 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 25px rgba(213, 185, 138, 0.4), 0 0 50px rgba(213, 185, 138, 0.2);
+  transform: scale(1.03);
+}
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background: rgba(14, 18, 28, 0.64);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-1);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(18px);
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 20px rgba(123, 182, 255, 0.15);
+  transform: scale(1.03);
+}
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ─── Tech card (glassmorphism + 3D tilt) ────────────── */
+.tech-card {
+  position: relative;
+  background: rgba(12, 16, 28, 0.72);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tech-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 55%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+.tech-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* ─── Text gradients ─────────────────────────────────── */
+.text-accent-gradient {
+  background: linear-gradient(130deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-hero-gradient {
+  background: linear-gradient(145deg, #ffffff 0%, #d5b98a 40%, #7bb6ff 80%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, var(--text-2) 0%, var(--text-1) 30%, var(--accent) 50%, var(--text-1) 70%, var(--text-2) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Terminal ───────────────────────────────────────── */
+.terminal-window {
+  background: rgba(6, 8, 14, 0.92);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.terminal-body {
+  padding: 24px;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--text-1);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Skeleton loader ────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Contribution cell ──────────────────────────────── */
+.contrib-cell {
+  border-radius: 3px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.contrib-cell:hover {
+  transform: scale(1.5);
+  z-index: 10;
+  position: relative;
+}
