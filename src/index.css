@@ -266,9 +266,10 @@ body {
   border-radius: 50%;
   --ring-inner: 60%;
   --ring-outer: 62%;
+  --ring-mask: radial-gradient(transparent var(--ring-inner), #000 var(--ring-outer));
   background: conic-gradient(from 90deg, rgba(123, 182, 255, 0), rgba(123, 182, 255, 0.55), rgba(213, 185, 138, 0.35), rgba(123, 182, 255, 0));
-  -webkit-mask: radial-gradient(transparent var(--ring-inner), #000 var(--ring-outer));
-  mask: radial-gradient(transparent var(--ring-inner), #000 var(--ring-outer));
+  -webkit-mask: var(--ring-mask);
+  mask: var(--ring-mask);
   opacity: 0.55;
   transform: translateZ(60px) rotateX(68deg);
   box-shadow: 0 0 18px rgba(123, 182, 255, 0.35);
@@ -295,8 +296,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: grid;
   place-items: center;
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  --hero-logo-filter: blur(12px) saturate(160%);
+  backdrop-filter: var(--hero-logo-filter);
+  -webkit-backdrop-filter: var(--hero-logo-filter);
   position: relative;
 }
 

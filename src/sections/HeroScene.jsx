@@ -80,12 +80,12 @@ function CppIcon() {
 }
 
 const TECH_NODES = [
-  { name: 'HTML5', Logo: HTML5Icon, color: '#E44D26', left: '18%', top: '20%', z: '70px', float: 6.8, delay: 0.1 },
-  { name: 'CSS3', Logo: CSS3Icon, color: '#1572B6', left: '78%', top: '22%', z: '60px', float: 7.4, delay: 0.3 },
-  { name: 'JavaScript', Logo: JSIcon, color: '#F7DF1E', left: '72%', top: '72%', z: '85px', float: 6.2, delay: 0.2 },
-  { name: 'Swift', Logo: SwiftIcon, color: '#F05138', left: '30%', top: '78%', z: '80px', float: 7.1, delay: 0.4 },
-  { name: 'Python', Logo: PythonIcon, color: '#3776AB', left: '14%', top: '58%', z: '55px', float: 6.6, delay: 0.15 },
-  { name: 'C++', Logo: CppIcon, color: '#00599C', left: '84%', top: '54%', z: '65px', float: 6.9, delay: 0.25 },
+  { name: 'HTML5', Logo: HTML5Icon, color: '#E44D26', left: '18%', top: '20%', z: 70, float: 6.8, delay: 0.1 },
+  { name: 'CSS3', Logo: CSS3Icon, color: '#1572B6', left: '78%', top: '22%', z: 60, float: 7.4, delay: 0.3 },
+  { name: 'JavaScript', Logo: JSIcon, color: '#F7DF1E', left: '72%', top: '72%', z: 85, float: 6.2, delay: 0.2 },
+  { name: 'Swift', Logo: SwiftIcon, color: '#F05138', left: '30%', top: '78%', z: 80, float: 7.1, delay: 0.4 },
+  { name: 'Python', Logo: PythonIcon, color: '#3776AB', left: '14%', top: '58%', z: 55, float: 6.6, delay: 0.15 },
+  { name: 'C++', Logo: CppIcon, color: '#00599C', left: '84%', top: '54%', z: 65, float: 6.9, delay: 0.25 },
 ]
 
 export default function HeroScene() {
@@ -145,7 +145,7 @@ export default function HeroScene() {
         />
         <motion.div className="hero-logo-field" style={{ x: logoShiftX, y: logoShiftY }}>
           {TECH_NODES.map(({ name, Logo, color, left, top, z, float, delay }) => (
-            <div key={name} className="hero-logo" style={{ left, top, '--z': z }}>
+            <div key={name} className="hero-logo" style={{ left, top, '--z': `${z}px` }}>
               <motion.div
                 className="hero-logo-chip"
                 style={{ boxShadow: `0 12px 32px rgba(0,0,0,0.55), 0 0 18px ${color}30` }}
