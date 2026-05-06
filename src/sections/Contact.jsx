@@ -166,7 +166,7 @@ export default function Contact() {
               {/* Email */}
               <button
                 onClick={copyEmail}
-                className="glass w-full flex items-center gap-4 px-5 py-4 rounded-2xl group transition-all duration-200 hover:border-[rgba(213,185,138,0.25)] text-left"
+                className="glass w-full flex items-center gap-4 px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl group transition-all duration-200 hover:border-[rgba(213,185,138,0.25)] text-left"
                 style={{ borderColor: copied ? 'rgba(213,185,138,0.3)' : '' }}
               >
                 <span style={{ color: 'var(--accent)' }}><EmailIcon /></span>
@@ -193,7 +193,7 @@ export default function Contact() {
                 href={GITHUB}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass w-full flex items-center gap-4 px-5 py-4 rounded-2xl group transition-all duration-200 hover:border-[rgba(123,182,255,0.25)]"
+                className="glass w-full flex items-center gap-4 px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl group transition-all duration-200 hover:border-[rgba(123,182,255,0.25)]"
               >
                 <span style={{ color: 'var(--accent-2)' }}><GitHubIcon /></span>
                 <div className="flex-1 min-w-0">
@@ -209,7 +209,7 @@ export default function Contact() {
 
           {/* RIGHT: Contact form */}
           <motion.div {...fadeUp(0.18)}>
-            <div className="glass-card p-8 relative overflow-hidden">
+            <div className="glass-card p-6 sm:p-8 relative overflow-hidden">
               {/* Glow */}
               <div className="absolute -top-10 -right-10 w-40 h-40 pointer-events-none"
                 style={{ background: 'radial-gradient(circle, rgba(213,185,138,0.08), transparent 70%)', borderRadius: '50%' }} />
@@ -313,4 +313,3 @@ function ExternalIcon() {
     </svg>
   )
 }
-

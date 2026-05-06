@@ -68,7 +68,11 @@ function ProjectCard({ project, index, className = '' }) {
         transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
       }}
       className={`glass-card relative overflow-hidden group ${className}`}
-      style={{ padding: project.featured ? '2.6rem 2.8rem' : '2.1rem 2.3rem' }}
+      style={{
+        padding: project.featured
+          ? 'clamp(1.7rem, 4vw, 2.6rem) clamp(1.6rem, 4vw, 2.8rem)'
+          : 'clamp(1.5rem, 3.5vw, 2.1rem) clamp(1.4rem, 3.5vw, 2.3rem)',
+      }}
     >
       {/* Hover ambient glow */}
       <div

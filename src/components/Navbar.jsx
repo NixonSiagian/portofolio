@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-function NSLogo() {
+function NSLogo({ className = '' }) {
   return (
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0.5" y="0.5" width="35" height="35" rx="9.5"
         fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" />
       <path d="M9.5 26V10L17 23V10" stroke="#D5B98A" strokeWidth="1.6"
@@ -67,11 +67,11 @@ export default function Navbar() {
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-5 pt-4 md:pt-5"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-5"
       >
         {/* Floating capsule */}
         <div
-          className="w-full max-w-4xl flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-500"
+          className="w-full max-w-4xl flex items-center justify-between rounded-xl sm:rounded-2xl px-4 sm:px-5 py-2.5 sm:py-3 transition-all duration-500"
           style={scrolled ? {
             background: 'rgba(5,6,11,0.82)',
             backdropFilter: 'blur(28px)',
@@ -88,9 +88,9 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2.5"
+            className="flex items-center gap-2"
           >
-            <NSLogo />
+            <NSLogo className="w-8 h-8 sm:w-9 sm:h-9" />
             <span
               className="hidden sm:block font-display font-semibold text-xs tracking-[0.12em] uppercase"
               style={{ color: 'var(--text-2)' }}
@@ -133,7 +133,7 @@ export default function Navbar() {
 
           {/* Hamburger */}
           <button
-            className="md:hidden flex flex-col justify-center items-end gap-[5px] w-8 h-8"
+            className="md:hidden flex flex-col justify-center items-end gap-1.5 w-7 h-7"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -143,7 +143,7 @@ export default function Navbar() {
                 className="block h-px transition-all duration-300 origin-center"
                 style={{
                   background: 'var(--text-1)',
-                  width: i === 1 ? (menuOpen ? '24px' : '16px') : '24px',
+                  width: i === 1 ? (menuOpen ? '20px' : '14px') : '20px',
                   transform: menuOpen
                     ? i === 0 ? 'translateY(6px) rotate(45deg)' : i === 2 ? 'translateY(-6px) rotate(-45deg)' : 'scaleX(0)'
                     : 'none',
@@ -158,37 +158,37 @@ export default function Navbar() {
       {/* Mobile fullscreen menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, backdropFilter: 'blur(40px)' }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8"
-            style={{ background: 'rgba(5,6,11,0.92)' }}
-          >
-            {NAV_LINKS.map(({ label, id }, i) => (
-              <motion.button
-                key={id}
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(40px)' }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-6 px-6 text-center"
+              style={{ background: 'rgba(5,6,11,0.92)' }}
+            >
+              {NAV_LINKS.map(({ label, id }, i) => (
+                <motion.button
+                  key={id}
                 initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 16 }}
-                transition={{ delay: i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => scrollTo(id)}
-                className="font-display font-bold text-5xl transition-colors duration-200"
-                style={{ color: active === id ? 'var(--accent)' : 'var(--text-1)' }}
-              >
-                {label}
-              </motion.button>
-            ))}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 16 }}
+                  transition={{ delay: i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={() => scrollTo(id)}
+                  className="font-display font-semibold text-3xl sm:text-4xl transition-colors duration-200"
+                  style={{ color: active === id ? 'var(--accent)' : 'var(--text-1)' }}
+                >
+                  {label}
+                </motion.button>
+              ))}
             <motion.button
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.32 }}
-              onClick={() => scrollTo('contact')}
-              className="btn-primary mt-4 font-body text-sm font-semibold px-8 py-3.5 rounded-2xl"
-            >
-              Let&apos;s Talk
-            </motion.button>
+                transition={{ delay: 0.32 }}
+                onClick={() => scrollTo('contact')}
+                className="btn-primary mt-4 font-body text-xs font-semibold px-7 py-3 rounded-xl"
+              >
+                Let&apos;s Talk
+              </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

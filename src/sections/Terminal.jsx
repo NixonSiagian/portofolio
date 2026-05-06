@@ -178,10 +178,10 @@ export default function Terminal() {
             initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="flex-1 max-w-2xl"
+            className="flex-1 max-w-2xl relative overflow-hidden"
           >
             {/* Ambient glow */}
-            <div className="absolute -inset-6 pointer-events-none opacity-40"
+            <div className="absolute -inset-4 sm:-inset-6 pointer-events-none opacity-40"
               style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(123,182,255,0.1), transparent 65%)' }} />
 
             <div className="terminal-window relative" onClick={() => !demoRunning && inputRef.current?.focus()}>
@@ -199,7 +199,7 @@ export default function Terminal() {
               <div
                 ref={bodyRef}
                 className="terminal-body overflow-y-auto"
-                style={{ minHeight: 280, maxHeight: 380 }}
+                style={{ minHeight: 'clamp(220px, 45vh, 320px)', maxHeight: 'clamp(320px, 55vh, 380px)' }}
               >
                 {lines.map((line, i) => {
                   if (line.type === 'divider') {

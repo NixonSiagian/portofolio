@@ -14,6 +14,7 @@ const LEVEL_COLORS = [
 
 const DAY_LABELS = ['Mon', '', 'Wed', '', 'Fri', '', '']
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const MOBILE_BREAKPOINT = 640
 
 function buildWeeks(contributions) {
   if (!contributions?.length) return []
@@ -56,12 +57,22 @@ export default function GitHubContributions() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [tooltip, setTooltip] = useState(null)
+  const [cellSize, setCellSize] = useState(13)
 
   useEffect(() => {
     fetch(CONTRIB_API)
       .then((r) => r.ok ? r.json() : Promise.reject())
       .then((json) => { setData(json); setLoading(false) })
       .catch(() => setLoading(false))
+  }, [])
+
+  useEffect(() => {
+    const updateSize = () => {
+      setCellSize(window.innerWidth < MOBILE_BREAKPOINT ? 10 : 13)
+    }
+    updateSize()
+    window.addEventListener('resize', updateSize, { passive: true })
+    return () => window.removeEventListener('resize', updateSize)
   }, [])
 
   const showTooltip = useCallback((e, cell) => {
@@ -91,8 +102,8 @@ export default function GitHubContributions() {
   const weeks = buildWeeks(contributions)
   const monthPositions = getMonthPositions(weeks)
 
-  const CELL = 13
-  const GAP = 3
+  const CELL = cellSize
+  const GAP = cellSize < 12 ? 2 : 3
 
   return (
     <section id="contributions" className="section-pad-tight" ref={ref}>
@@ -139,7 +150,7 @@ export default function GitHubContributions() {
                 { label: 'Longest streak', value: loading ? '—' : `${maxStreak}d` },
                 { label: 'Active days', value: loading ? '—' : activeDays },
               ].map(({ label, value }) => (
-                <div key={label} className="glass px-5 py-3 rounded-xl">
+                <div key={label} className="glass px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl">
                   <p className="font-display font-bold text-xl" style={{ color: 'var(--accent)' }}>{value}</p>
                   <p className="font-body text-[11px] uppercase tracking-wide mt-0.5" style={{ color: 'var(--text-3)' }}>{label}</p>
                 </div>
@@ -151,7 +162,7 @@ export default function GitHubContributions() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.25 }}
-              className="glass-card p-6 relative overflow-hidden"
+              className="glass-card p-5 sm:p-6 relative overflow-hidden"
             >
               {/* Background glow */}
               <div className="absolute top-0 right-0 w-64 h-64 pointer-events-none"
