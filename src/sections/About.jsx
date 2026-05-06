@@ -59,18 +59,24 @@ export default function About() {
                 }}
               />
 
-              <p
-                className="font-body text-lg leading-relaxed mb-5"
-                style={{ color: 'var(--text-1)' }}
+              <h2
+                className="font-display font-semibold mb-5"
+                style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)', color: 'var(--text-1)' }}
               >
-                I'm Nixon — a developer who cares as much about{' '}
+                Design-led development, engineered with intent.
+              </h2>
+              <p
+                className="font-body text-base md:text-lg leading-relaxed mb-5"
+                style={{ color: 'var(--text-2)' }}
+              >
+                I&apos;m Nixon — a developer who cares as much about{' '}
                 <em style={{ color: 'var(--accent)', fontStyle: 'normal' }}>how things feel</em>{' '}
-                as how they work. Since 2020 I've built across the full stack: 
+                as how they work. Since 2020 I&apos;ve built across the full stack: 
                 polished frontends, native iOS apps, C++ utilities, and everything in between.
               </p>
               <p
                 className="font-body leading-relaxed mb-9"
-                style={{ color: 'var(--text-2)' }}
+                style={{ color: 'var(--text-3)' }}
               >
                 I'm obsessive about the small details — the timing of an animation, the 
                 precision of a layout, the rhythm of a codebase. I believe software should 

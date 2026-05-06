@@ -65,13 +65,13 @@ export default function Contact() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-bold leading-[1.0] mb-7"
-              style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', color: 'var(--text-1)' }}
+              style={{ fontSize: 'clamp(2.7rem, 6.8vw, 5.4rem)', color: 'var(--text-1)' }}
             >
-              Let's make{' '}
+              Let&apos;s build{' '}
               <br />
               <span className="text-accent-gradient">something</span>
               <br />
-              together.
+              unforgettable.
             </motion.h2>
 
             <motion.p
@@ -81,8 +81,8 @@ export default function Contact() {
               className="font-body leading-relaxed mb-9"
               style={{ color: 'var(--text-2)' }}
             >
-              Open to freelance projects, collaborations, and full-time roles.
-              If you have an idea worth building, I'm all ears.
+              Open to select freelance projects, collaborations, and full-time roles.
+              If you have a product worth elevating, I&apos;m all ears.
             </motion.p>
 
             {/* Email copy pill */}

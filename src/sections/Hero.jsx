@@ -10,26 +10,26 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 65% 60% at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 60%)',
+            'radial-gradient(ellipse 70% 60% at 45% 35%, rgba(255,255,255,0.06) 0%, transparent 62%)',
         }}
       />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 55% 65% at 80% 40%, rgba(139,175,201,0.18), transparent 70%)',
-          opacity: 0.35,
+            'radial-gradient(ellipse 60% 60% at 80% 38%, rgba(123,182,255,0.22), transparent 68%)',
+          opacity: 0.4,
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-20">
-        <div className="grid lg:grid-cols-[1.08fr_0.92fr] items-center gap-12 lg:gap-16">
-          <div className="max-w-xl">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-32 pb-20 md:pt-40 md:pb-24">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] items-center gap-12 lg:gap-20">
+          <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-7"
+              className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full mb-8"
             >
               <span
                 className="w-1.5 h-1.5 rounded-full animate-pulse"
@@ -39,7 +39,7 @@ export default function Hero() {
                 className="font-body text-[11px] tracking-[0.2em] uppercase"
                 style={{ color: 'var(--text-2)' }}
               >
-                Nixon Siagian — Developer / Programmer
+                Nixon Siagian — Creative Developer
               </span>
             </motion.div>
 
@@ -49,21 +49,22 @@ export default function Hero() {
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-semibold leading-[1.02] mb-6"
               style={{
-                fontSize: 'clamp(2.8rem, 6.8vw, 5.6rem)',
+                fontSize: 'clamp(2.9rem, 7vw, 6.1rem)',
                 color: 'var(--text-1)',
               }}
             >
-              Crafting modern digital experiences
+              Cinematic digital products, engineered to feel effortless.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="font-body text-sm tracking-[0.2em] uppercase mb-10"
-              style={{ color: 'var(--text-3)' }}
+              className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-10"
+              style={{ color: 'var(--text-2)' }}
             >
-              Developer since 2020
+              I craft premium interfaces across web, iOS, and tooling — blending surgical typography,
+              smooth motion, and systems-level precision.
             </motion.p>
 
             <motion.div
@@ -79,7 +80,7 @@ export default function Hero() {
                 className="font-body font-medium text-sm px-7 py-3.5 rounded-2xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
                 style={{ background: 'var(--accent)', color: 'var(--bg)' }}
               >
-                View Work
+                View Selected Work
               </button>
               <button
                 onClick={() =>
@@ -88,14 +89,25 @@ export default function Hero() {
                 className="glass font-body font-medium text-sm px-7 py-3.5 rounded-2xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
                 style={{ color: 'var(--text-1)' }}
                 onMouseEnter={e =>
-                  (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')
+                  (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')
                 }
                 onMouseLeave={e =>
                   (e.currentTarget.style.background = '')
                 }
               >
-                Contact
+                Let&apos;s Talk
               </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-10 flex flex-wrap gap-6 text-xs uppercase tracking-[0.22em]"
+              style={{ color: 'var(--text-3)' }}
+            >
+              <span>Available for select collaborations</span>
+              <span className="hidden sm:inline">Based in Indonesia</span>
             </motion.div>
           </div>
 
@@ -103,13 +115,13 @@ export default function Hero() {
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[50vh] sm:h-[58vh] lg:h-[70vh] w-full"
+            className="relative h-[52vh] sm:h-[62vh] lg:h-[74vh] w-full"
           >
             <div
-              className="absolute -inset-6 rounded-[36px] opacity-60 pointer-events-none"
+              className="absolute -inset-6 rounded-[40px] opacity-70 pointer-events-none"
               style={{
                 background:
-                  'radial-gradient(ellipse at center, rgba(192,164,124,0.18), transparent 70%)',
+                  'radial-gradient(ellipse at center, rgba(213,185,138,0.22), transparent 70%)',
               }}
             />
             <div className="glass-card w-full h-full">
@@ -125,7 +137,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 1.2 }}
-        className="absolute bottom-10 left-10 z-10 hidden md:flex flex-col items-start gap-2"
+        className="absolute bottom-10 left-8 z-10 hidden md:flex flex-col items-start gap-2"
       >
         <span
           className="font-body text-[10px] tracking-[0.2em] uppercase"

@@ -2,12 +2,12 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const SKILLS = [
-  { name: 'CSS', note: 'Layout & motion', color: '#58A8E0', size: 'lg', shift: -18 },
-  { name: 'JavaScript', note: 'Interaction logic', color: '#F2C45B', size: 'lg', shift: 10 },
-  { name: 'C++', note: 'Systems tooling', color: '#B18BEA', size: 'md', shift: 24 },
-  { name: 'Swift', note: 'iOS craft', color: '#F59E5B', size: 'md', shift: -6 },
-  { name: 'Pawn', note: 'Game scripting', color: '#7FD6A5', size: 'sm', shift: 16 },
-  { name: 'HTML', note: 'Semantic structure', color: '#EF7B55', size: 'sm', shift: -10 },
+  { name: 'CSS', note: 'Layout & motion', color: '#6bc2ff', size: 'lg', shift: -8 },
+  { name: 'JavaScript', note: 'Interaction logic', color: '#f6c767', size: 'lg', shift: 6 },
+  { name: 'C++', note: 'Systems tooling', color: '#b79bff', size: 'md', shift: 10 },
+  { name: 'Swift', note: 'iOS craft', color: '#f29a6e', size: 'md', shift: -4 },
+  { name: 'Pawn', note: 'Game scripting', color: '#7fe2b4', size: 'sm', shift: 6 },
+  { name: 'HTML', note: 'Semantic structure', color: '#ff8a6a', size: 'sm', shift: -6 },
 ]
 
 const TOOLS = ['Git', 'VS Code', 'Node.js', 'REST APIs', 'Figma', 'CLI', 'Bash', 'JSON']
@@ -20,8 +20,8 @@ const SIZE_MAP = {
 
 function SkillChip({ skill, index, inView }) {
   const sizeStyle = SIZE_MAP[skill.size]
-  const floatDistance = 6 + (index % 3) * 2
-  const floatDuration = 6.5 + index * 0.4
+  const floatDistance = 4 + (index % 3) * 1.6
+  const floatDuration = 7.2 + index * 0.3
 
   return (
     <motion.div
@@ -40,7 +40,7 @@ function SkillChip({ skill, index, inView }) {
           delay: 0.6 + index * 0.12,
         },
       }}
-      whileHover={{ y: -8, scale: 1.04 }}
+      whileHover={{ y: -6, scale: 1.02 }}
       className="glass-chip"
       style={{
         marginLeft: `${skill.shift}px`,
@@ -93,7 +93,7 @@ export default function Skills() {
               className="font-body text-sm leading-relaxed max-w-[180px]"
               style={{ color: 'var(--text-3)' }}
             >
-              Languages and tools I rely on to build thoughtful, robust applications.
+              Languages and tools I rely on to build thoughtful, premium applications.
             </p>
           </motion.div>
 
@@ -108,7 +108,7 @@ export default function Skills() {
                 color: 'var(--text-1)',
               }}
             >
-              Skillset in motion
+              Core capabilities
             </motion.h2>
 
             <div className="flex flex-wrap gap-4">
