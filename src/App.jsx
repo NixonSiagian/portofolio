@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Hero from './sections/Hero'
 import About from './sections/About'
-import Skills from './sections/Skills'
+import TechStack from './sections/TechStack'
 import Work from './sections/Work'
+import GitHubRepos from './sections/GitHubRepos'
+import GitHubContributions from './sections/GitHubContributions'
+import Terminal from './sections/Terminal'
 import Contact from './sections/Contact'
 
 function CustomCursor() {
@@ -59,10 +63,14 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <Skills />
+        <TechStack />
         <Work />
+        <GitHubRepos />
+        <GitHubContributions />
+        <Terminal />
         <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
