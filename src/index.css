@@ -265,7 +265,8 @@ body {
   height: 150%;
   border-radius: 50%;
   --ring-inner: 60%;
-  --ring-outer: 62%;
+  --ring-thickness: 2%;
+  --ring-outer: calc(var(--ring-inner) + var(--ring-thickness));
   --ring-mask: radial-gradient(transparent var(--ring-inner), #000 var(--ring-outer));
   background: conic-gradient(from 90deg, rgba(123, 182, 255, 0), rgba(123, 182, 255, 0.55), rgba(213, 185, 138, 0.35), rgba(123, 182, 255, 0));
   -webkit-mask: var(--ring-mask);
@@ -296,9 +297,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: grid;
   place-items: center;
-  --hero-logo-backdrop-filter: blur(12px) saturate(160%);
-  backdrop-filter: var(--hero-logo-backdrop-filter);
-  -webkit-backdrop-filter: var(--hero-logo-backdrop-filter);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
   position: relative;
 }
 
