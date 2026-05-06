@@ -14,6 +14,7 @@ const LEVEL_COLORS = [
 
 const DAY_LABELS = ['Mon', '', 'Wed', '', 'Fri', '', '']
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const MOBILE_BREAKPOINT = 640
 
 function buildWeeks(contributions) {
   if (!contributions?.length) return []
@@ -67,7 +68,7 @@ export default function GitHubContributions() {
 
   useEffect(() => {
     const updateSize = () => {
-      setCellSize(window.innerWidth < 640 ? 10 : 13)
+      setCellSize(window.innerWidth < MOBILE_BREAKPOINT ? 10 : 13)
     }
     updateSize()
     window.addEventListener('resize', updateSize, { passive: true })
