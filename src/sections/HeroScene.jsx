@@ -95,6 +95,9 @@ const TECH_NODES = [
 
 /* ── Holographic core sphere ──────────────────────────────────── */
 
+// Frequency (rad/s) of the glow-shell pulsing animation
+const PULSE_FREQ = 0.85
+
 function HoloSphere() {
   const coreRef  = useRef()
   const glowRef  = useRef()
@@ -107,9 +110,9 @@ function HoloSphere() {
       coreRef.current.rotation.x =  Math.sin(t * 0.07) * 0.12
     }
     if (glowRef.current) {
-      const pulse = 1 + Math.sin(t * 0.85) * 0.025
+      const pulse = 1 + Math.sin(t * PULSE_FREQ) * 0.025
       glowRef.current.scale.setScalar(pulse)
-      glowRef.current.material.opacity = 0.045 + Math.sin(t * 0.85) * 0.015
+      glowRef.current.material.opacity = 0.045 + Math.sin(t * PULSE_FREQ) * 0.015
     }
     if (wireRef.current) {
       wireRef.current.rotation.y = -t * 0.055
@@ -333,6 +336,7 @@ export default function HeroScene() {
 
       <Canvas
         camera={{ position: [0, 0, 7.5], fov: 50 }}
+        // Cap pixel ratio at 1.5 to balance sharpness vs GPU cost on mobile
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ width: '100%', height: '100%', display: 'block' }}
