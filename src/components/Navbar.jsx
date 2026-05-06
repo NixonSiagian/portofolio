@@ -13,7 +13,7 @@ function NSLogo() {
       {/* N letter */}
       <path
         d="M10 27V11L18 24V11"
-        stroke="#C0A47C"
+        stroke="#D5B98A"
         strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -21,12 +21,12 @@ function NSLogo() {
       {/* S letter */}
       <path
         d="M22 15C22 13.3431 23.3431 12 25 12H26C27.6569 12 29 13.3431 29 15C29 16.6569 27.6569 18 26 18H24C22.3431 18 21 19.3431 21 21V22C21 23.6569 22.3431 25 24 25H26C27.6569 25 29 23.6569 29 22"
-        stroke="#8BAFC9"
+        stroke="#7BB6FF"
         strokeWidth="1.6"
         strokeLinecap="round"
       />
       {/* Subtle corner glow */}
-      <circle cx="34" cy="4" r="6" fill="rgba(192,164,124,0.12)" />
+       <circle cx="34" cy="4" r="6" fill="rgba(213,185,138,0.16)" />
     </svg>
   )
 }
@@ -64,10 +64,10 @@ export default function Navbar() {
         <div
           className="max-w-7xl mx-auto flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-500"
           style={scrolled ? {
-            background: 'rgba(7,7,13,0.7)',
-            backdropFilter: 'blur(28px)',
-            WebkitBackdropFilter: 'blur(28px)',
-            border: '1px solid rgba(255,255,255,0.07)',
+            background: 'rgba(5,6,11,0.76)',
+            backdropFilter: 'blur(22px)',
+            WebkitBackdropFilter: 'blur(22px)',
+            border: '1px solid rgba(255,255,255,0.08)',
           } : {}}
         >
           {/* Logo */}
@@ -112,7 +112,7 @@ export default function Navbar() {
               onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              Hire Me
+                Let&apos;s Talk
             </button>
           </div>
 
@@ -172,7 +172,7 @@ export default function Navbar() {
               className="mt-4 font-body text-sm font-medium px-7 py-3 rounded-xl"
               style={{ background: 'var(--accent)', color: 'var(--bg)' }}
             >
-              Hire Me
+                Let&apos;s Talk
             </motion.button>
           </motion.div>
         )}

@@ -1,62 +1,105 @@
 import { useRef, useMemo, useEffect, useState, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, Float, RoundedBox, Text } from '@react-three/drei'
+import { ContactShadows, Text } from '@react-three/drei'
 import { MathUtils } from 'three'
 
-function LanguageBadge({ label, color, position, scale, speed, isMobile }) {
+const LOGOS = [
+  { label: 'CSS', color: '#6bc2ff', radius: 3.1, speed: 0.4, height: 0.6, depth: -0.4 },
+  { label: 'JavaScript', color: '#f6c767', radius: 2.7, speed: 0.52, height: -0.3, depth: 0.5 },
+  { label: 'C++', color: '#b79bff', radius: 3.4, speed: 0.36, height: 0.1, depth: -0.9 },
+  { label: 'Swift', color: '#f29a6e', radius: 2.9, speed: 0.48, height: -0.7, depth: 0.2 },
+  { label: 'Pawn', color: '#7fe2b4', radius: 3.6, speed: 0.3, height: 0.9, depth: -0.2 },
+  { label: 'HTML', color: '#ff8a6a', radius: 2.5, speed: 0.58, height: -0.1, depth: 0.8 },
+]
+
+function OrbitingLogo({ label, color, radius, speed, height, depth, offset, isMobile }) {
   const group = useRef(null)
 
   useFrame(({ clock }) => {
     if (!group.current) return
-    const t = clock.elapsedTime
-    group.current.rotation.z = Math.sin(t * speed * 0.35) * 0.12
-    group.current.rotation.y = Math.cos(t * speed * 0.28) * 0.18
+    const t = clock.elapsedTime * speed + offset
+    const x = Math.cos(t) * radius
+    const z = Math.sin(t) * radius * 0.6 + depth
+    const y = Math.sin(t * 0.7) * 0.45 + height
+    group.current.position.set(x, y, z)
+    group.current.rotation.y = t + offset
   })
 
   return (
-    <Float speed={speed * 0.55} rotationIntensity={0.22} floatIntensity={0.5}>
-      <group ref={group} position={position} scale={scale}>
-        <RoundedBox args={[1.9, 0.95, 0.22]} radius={0.2} smoothness={4}>
-          {isMobile ? (
-            <meshStandardMaterial color="#0e111c" roughness={0.45} metalness={0.1} />
-          ) : (
-            <meshPhysicalMaterial
-              color="#121726"
-              roughness={0.22}
-              metalness={0.1}
-              transmission={0.65}
-              thickness={0.45}
-              clearcoat={0.7}
-              clearcoatRoughness={0.25}
-              ior={1.4}
-              envMapIntensity={0.85}
-            />
-          )}
-        </RoundedBox>
-        <Text
-          fontSize={0.34}
-          position={[0, 0, 0.18]}
+    <group ref={group}>
+      <mesh>
+        <circleGeometry args={[0.45, 48]} />
+        <meshStandardMaterial
           color={color}
-          anchorX="center"
-          anchorY="middle"
-        >
-          {label}
-        </Text>
-        <mesh position={[0, 0, 0.2]}>
-          <planeGeometry args={[1.7, 0.8]} />
-          <meshBasicMaterial color={color} transparent opacity={0.08} />
-        </mesh>
-      </group>
-    </Float>
+          roughness={0.28}
+          metalness={0.25}
+          emissive={color}
+          emissiveIntensity={isMobile ? 0.18 : 0.35}
+        />
+      </mesh>
+      <mesh position={[0, 0, -0.06]}>
+        <circleGeometry args={[0.62, 40]} />
+        <meshStandardMaterial color="#0b0f1a" roughness={0.6} metalness={0.1} />
+      </mesh>
+      <Text
+        fontSize={0.24}
+        position={[0, 0, 0.12]}
+        color="#f4f6fb"
+        anchorX="center"
+        anchorY="middle"
+      >
+        {label}
+      </Text>
+    </group>
+  )
+}
+
+function CentralOrb({ isMobile }) {
+  return (
+    <group>
+      <mesh>
+        <sphereGeometry args={[1.1, isMobile ? 48 : 72, isMobile ? 48 : 72]} />
+        <meshPhysicalMaterial
+          color="#0e1320"
+          roughness={0.22}
+          metalness={0.25}
+          clearcoat={0.8}
+          clearcoatRoughness={0.18}
+          transmission={0.25}
+          thickness={0.35}
+          ior={1.35}
+        />
+      </mesh>
+      <mesh scale={1.22}>
+        <sphereGeometry args={[1.1, 32, 32]} />
+        <meshStandardMaterial
+          color="#7bb6ff"
+          emissive="#7bb6ff"
+          emissiveIntensity={0.3}
+          transparent
+          opacity={0.08}
+        />
+      </mesh>
+      <Text
+        fontSize={0.5}
+        position={[0, 0, 1.15]}
+        color="#f4f6fb"
+        anchorX="center"
+        anchorY="middle"
+        letterSpacing={0.08}
+      >
+        NS
+      </Text>
+    </group>
   )
 }
 
 function CameraRig({ mouse }) {
   useFrame(({ camera }) => {
     const targetX = mouse.current.x * 0.35
-    const targetY = -mouse.current.y * 0.22
-    camera.position.x += (targetX - camera.position.x) * 0.04
-    camera.position.y += (targetY - camera.position.y) * 0.04
+    const targetY = -mouse.current.y * 0.2
+    camera.position.x = MathUtils.lerp(camera.position.x, targetX, 0.05)
+    camera.position.y = MathUtils.lerp(camera.position.y, targetY, 0.05)
     camera.lookAt(0, 0, 0)
   })
   return null
@@ -64,45 +107,47 @@ function CameraRig({ mouse }) {
 
 function Scene({ mouse, isMobile }) {
   const group = useRef(null)
-  const badges = useMemo(() => {
-    const all = [
-      { label: 'CSS', color: '#58A8E0', position: [-1.9, 1.05, -1.2], scale: 1.05, speed: 0.85 },
-      { label: 'JavaScript', color: '#F2C45B', position: [1.6, 0.35, -1.8], scale: 1.1, speed: 0.7 },
-      { label: 'C++', color: '#B18BEA', position: [-0.2, -1.2, -0.7], scale: 0.95, speed: 0.95 },
-      { label: 'Swift', color: '#F59E5B', position: [2.1, -1.1, -2.6], scale: 0.9, speed: 0.78 },
-      { label: 'Pawn', color: '#7FD6A5', position: [-2.5, -0.4, -2.8], scale: 0.85, speed: 1.05 },
-      { label: 'HTML', color: '#EF7B55', position: [0.5, 1.7, -3.2], scale: 0.9, speed: 0.6 },
-    ]
-    if (isMobile) return all.slice(0, 4).map(item => ({ ...item, scale: item.scale * 0.85 }))
-    return all
-  }, [isMobile])
+  const logos = useMemo(
+    () =>
+      LOGOS.map((logo, index) => ({
+        ...logo,
+        offset: index * 0.9,
+      })),
+    [],
+  )
 
   useFrame(() => {
     if (!group.current) return
     group.current.rotation.y = MathUtils.lerp(
       group.current.rotation.y,
-      mouse.current.x * 0.22,
-      0.06,
-    )
-    group.current.rotation.x = MathUtils.lerp(
-      group.current.rotation.x,
-      -mouse.current.y * 0.12,
-      0.06,
+      mouse.current.x * 0.18,
+      0.04,
     )
   })
 
   return (
     <>
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[4, 6, 4]} intensity={0.5} color="#F4EFE6" />
-      <pointLight position={[-4, 4, 3]} intensity={0.45} color="#9BBBD6" />
-      <pointLight position={[3, -3, 4]} intensity={0.35} color="#C0A47C" />
-      {!isMobile && <Environment preset="city" />}
+      <color attach="background" args={['#05060b']} />
+      <fog attach="fog" args={['#05060b', 8, 16]} />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[5, 6, 4]} intensity={1.05} color="#f5f7ff" />
+      <pointLight position={[-4, -2, 4]} intensity={0.55} color="#7bb6ff" />
+      <pointLight position={[3, 2, -3]} intensity={0.45} color="#d5b98a" />
       <group ref={group}>
-        {badges.map((badge) => (
-          <LanguageBadge key={badge.label} {...badge} isMobile={isMobile} />
+        <CentralOrb isMobile={isMobile} />
+        {logos.map((logo) => (
+          <OrbitingLogo key={logo.label} {...logo} isMobile={isMobile} />
         ))}
       </group>
+      {!isMobile && (
+        <ContactShadows
+          position={[0, -2.2, 0]}
+          opacity={0.35}
+          scale={10}
+          blur={2.4}
+          far={6}
+        />
+      )}
       <CameraRig mouse={mouse} />
     </>
   )
@@ -120,6 +165,7 @@ export default function LanguageScene({ className = '' }) {
   }, [])
 
   useEffect(() => {
+    if (isMobile) return
     const handler = (event) => {
       mouse.current = {
         x: (event.clientX / window.innerWidth) * 2 - 1,
@@ -128,18 +174,18 @@ export default function LanguageScene({ className = '' }) {
     }
     window.addEventListener('mousemove', handler, { passive: true })
     return () => window.removeEventListener('mousemove', handler)
-  }, [])
+  }, [isMobile])
 
   return (
     <Canvas
       className={className}
-      camera={{ position: [0, 0, 6], fov: 45 }}
-      dpr={[1, isMobile ? 1 : 1.5]}
+      camera={{ position: [0, 0, 8], fov: 42 }}
+      dpr={[1, isMobile ? 1 : 1.4]}
+      shadows={!isMobile}
       gl={{
         antialias: !isMobile,
         alpha: true,
         powerPreference: 'high-performance',
-        depth: true,
       }}
       style={{ width: '100%', height: '100%', background: 'transparent' }}
     >
