@@ -296,9 +296,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: grid;
   place-items: center;
-  --hero-logo-filter: blur(12px) saturate(160%);
-  backdrop-filter: var(--hero-logo-filter);
-  -webkit-backdrop-filter: var(--hero-logo-filter);
+  --hero-logo-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: var(--hero-logo-backdrop-filter);
+  -webkit-backdrop-filter: var(--hero-logo-backdrop-filter);
   position: relative;
 }
 
