@@ -267,9 +267,15 @@ body {
   --ring-thickness: clamp(2px, 1.8%, 8px);
   --ring-outer: calc(var(--ring-inner) + var(--ring-thickness));
   --ring-mask: radial-gradient(transparent var(--ring-inner), #000 var(--ring-outer));
-  background: conic-gradient(from 90deg, rgba(123, 182, 255, 0), rgba(123, 182, 255, 0.55), rgba(213, 185, 138, 0.35), rgba(123, 182, 255, 0));
-  -webkit-mask: var(--ring-mask);
+  background: conic-gradient(
+    from 90deg,
+    rgba(123, 182, 255, 0) 0deg,
+    rgba(123, 182, 255, 0.55) 120deg,
+    rgba(213, 185, 138, 0.35) 240deg,
+    rgba(123, 182, 255, 0) 360deg
+  );
   mask: var(--ring-mask);
+  -webkit-mask: var(--ring-mask);
   opacity: 0.55;
   transform: translateZ(60px) rotateX(68deg);
   box-shadow: 0 0 18px rgba(123, 182, 255, 0.35);
