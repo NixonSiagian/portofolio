@@ -1,7 +1,4 @@
-import { useRef, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, Stars, Float } from '@react-three/drei'
-import * as THREE from 'three'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 
 /* ── Inline SVG Logos ─────────────────────────────────────────── */
 
@@ -82,278 +79,87 @@ function CppIcon() {
   )
 }
 
-/* ── Tech node data ────────────────────────────────────────────── */
-
 const TECH_NODES = [
-  { name: 'HTML5',      color: '#E44D26', Logo: HTML5Icon,  pos: [ 2.3,  0.8,  0.2] },
-  { name: 'CSS3',       color: '#1572B6', Logo: CSS3Icon,   pos: [-2.1,  0.9, -0.4] },
-  { name: 'JavaScript', color: '#F7DF1E', Logo: JSIcon,     pos: [ 0.6,  2.1,  1.5] },
-  { name: 'Swift',      color: '#F05138', Logo: SwiftIcon,  pos: [ 1.9, -1.1,  1.0] },
-  { name: 'Python',     color: '#3776AB', Logo: PythonIcon, pos: [-1.7, -1.3,  1.4] },
-  { name: 'C++',        color: '#00599C', Logo: CppIcon,    pos: [ 0.2, -1.9, -1.6] },
+  { name: 'HTML5', Logo: HTML5Icon, color: '#E44D26', left: '18%', top: '20%', z: '70px', float: 6.8, delay: 0.1 },
+  { name: 'CSS3', Logo: CSS3Icon, color: '#1572B6', left: '78%', top: '22%', z: '60px', float: 7.4, delay: 0.3 },
+  { name: 'JavaScript', Logo: JSIcon, color: '#F7DF1E', left: '72%', top: '72%', z: '85px', float: 6.2, delay: 0.2 },
+  { name: 'Swift', Logo: SwiftIcon, color: '#F05138', left: '30%', top: '78%', z: '80px', float: 7.1, delay: 0.4 },
+  { name: 'Python', Logo: PythonIcon, color: '#3776AB', left: '14%', top: '58%', z: '55px', float: 6.6, delay: 0.15 },
+  { name: 'C++', Logo: CppIcon, color: '#00599C', left: '84%', top: '54%', z: '65px', float: 6.9, delay: 0.25 },
 ]
 
-/* ── Holographic core sphere ──────────────────────────────────── */
-
-// Frequency (rad/s) of the glow-shell pulsing animation
-const PULSE_FREQ = 0.85
-
-function HoloSphere() {
-  const coreRef  = useRef()
-  const glowRef  = useRef()
-  const wireRef  = useRef()
-
-  useFrame(({ clock }) => {
-    const t = clock.elapsedTime
-    if (coreRef.current) {
-      coreRef.current.rotation.y =  t * 0.09
-      coreRef.current.rotation.x =  Math.sin(t * 0.07) * 0.12
-    }
-    if (glowRef.current) {
-      const pulse = 1 + Math.sin(t * PULSE_FREQ) * 0.025
-      glowRef.current.scale.setScalar(pulse)
-      glowRef.current.material.opacity = 0.045 + Math.sin(t * PULSE_FREQ) * 0.015
-    }
-    if (wireRef.current) {
-      wireRef.current.rotation.y = -t * 0.055
-      wireRef.current.rotation.z =  t * 0.032
-    }
-  })
-
-  return (
-    <group>
-      {/* Bright inner core */}
-      <mesh>
-        <sphereGeometry args={[0.22, 16, 16]} />
-        <meshBasicMaterial color="#a8d4ff" />
-      </mesh>
-
-      {/* Main sphere */}
-      <mesh ref={coreRef}>
-        <sphereGeometry args={[1, 48, 48]} />
-        <meshStandardMaterial
-          color="#030710"
-          emissive="#1a3a6e"
-          emissiveIntensity={1.4}
-          roughness={0.08}
-          metalness={0.92}
-        />
-      </mesh>
-
-      {/* Outer glow shell */}
-      <mesh ref={glowRef}>
-        <sphereGeometry args={[1.38, 24, 24]} />
-        <meshBasicMaterial
-          color="#4a9fff"
-          transparent
-          opacity={0.05}
-          side={THREE.BackSide}
-          depthWrite={false}
-        />
-      </mesh>
-
-      {/* Holographic wireframe grid */}
-      <mesh ref={wireRef}>
-        <sphereGeometry args={[1.025, 18, 18]} />
-        <meshBasicMaterial
-          color="#5aadff"
-          wireframe
-          transparent
-          opacity={0.1}
-        />
-      </mesh>
-    </group>
-  )
-}
-
-/* ── Orbital ring ─────────────────────────────────────────────── */
-
-function OrbitalRing({ radius, tiltX, tiltZ, color, opacity, rotSpeed }) {
-  const meshRef = useRef()
-
-  useFrame(({ clock }) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.z = clock.elapsedTime * rotSpeed
-    }
-  })
-
-  return (
-    <group rotation={[tiltX, 0, tiltZ]}>
-      <mesh ref={meshRef}>
-        <torusGeometry args={[radius, 0.007, 8, 120]} />
-        <meshBasicMaterial color={color} transparent opacity={opacity} depthWrite={false} />
-      </mesh>
-    </group>
-  )
-}
-
-/* ── Floating tech logo node ──────────────────────────────────── */
-
-function TechNode({ name, color, Logo, pos, floatSpeed }) {
-  return (
-    <Float
-      position={pos}
-      speed={floatSpeed}
-      rotationIntensity={0}
-      floatIntensity={0.35}
-    >
-      <Html
-        center
-        distanceFactor={8}
-        zIndexRange={[1, 10]}
-        style={{ pointerEvents: 'none', userSelect: 'none' }}
-      >
-        <div
-          style={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '13px',
-            background: 'rgba(6, 10, 20, 0.9)',
-            border: `1px solid ${color}55`,
-            boxShadow: `0 0 16px ${color}35, 0 8px 24px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.08)`,
-            backdropFilter: 'blur(14px)',
-            WebkitBackdropFilter: 'blur(14px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '11px',
-          }}
-          aria-label={name}
-        >
-          <Logo />
-        </div>
-      </Html>
-    </Float>
-  )
-}
-
-/* ── Main scene content ───────────────────────────────────────── */
-
-function Scene({ mouse }) {
-  const groupRef = useRef()
-  const tiltX    = useRef(0)
-  const tiltY    = useRef(0)
-
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return
-    const mx = mouse.current.x
-    const my = mouse.current.y
-
-    // Lerp mouse tilt
-    tiltX.current += (my * 0.22 - tiltX.current) * 0.04
-    tiltY.current += (mx * 0.28 - tiltY.current) * 0.04
-
-    // Apply: auto-rotate on Y + mouse tilt
-    groupRef.current.rotation.y = clock.elapsedTime * 0.16 + tiltY.current
-    groupRef.current.rotation.x = tiltX.current
-  })
-
-  return (
-    <group ref={groupRef}>
-      {/* Lighting */}
-      <ambientLight intensity={0.18} color="#ffffff" />
-      <pointLight position={[0, 0, 0]}  intensity={3.5} color="#4a9fff" distance={7}  decay={2} />
-      <pointLight position={[4, 3, 2]}  intensity={1.8} color="#a78bfa" distance={12} decay={2} />
-      <pointLight position={[-3, -2, 3]} intensity={1.2} color="#d5b98a" distance={9}  decay={2} />
-
-      {/* Core */}
-      <HoloSphere />
-
-      {/* Orbital rings */}
-      <OrbitalRing radius={2.05} tiltX={0.42} tiltZ={0.30} color="#7bb6ff" opacity={0.22} rotSpeed={ 0.06} />
-      <OrbitalRing radius={2.42} tiltX={1.25} tiltZ={0.08} color="#a78bfa" opacity={0.17} rotSpeed={-0.04} />
-      <OrbitalRing radius={2.72} tiltX={0.18} tiltZ={1.08} color="#d5b98a" opacity={0.14} rotSpeed={ 0.05} />
-
-      {/* Floating tech logos */}
-      {TECH_NODES.map((tech, i) => (
-        <TechNode
-          key={tech.name}
-          {...tech}
-          floatSpeed={1.15 + i * 0.14}
-        />
-      ))}
-    </group>
-  )
-}
-
-/* ── Export ───────────────────────────────────────────────────── */
-
 export default function HeroScene() {
-  const mouse        = useRef({ x: 0, y: 0 })
-  const containerRef = useRef()
+  const pointerX = useMotionValue(0)
+  const pointerY = useMotionValue(0)
 
-  const handlePointerMove = (e) => {
-    if (!containerRef.current) return
-    const r = containerRef.current.getBoundingClientRect()
-    mouse.current.x =  ((e.clientX - r.left) / r.width  - 0.5) * 2
-    mouse.current.y = -((e.clientY - r.top)  / r.height - 0.5) * 2
+  const smoothX = useSpring(pointerX, { stiffness: 120, damping: 22, mass: 0.6 })
+  const smoothY = useSpring(pointerY, { stiffness: 120, damping: 22, mass: 0.6 })
+
+  const rotateX = useTransform(smoothY, [-1, 1], [8, -8])
+  const rotateY = useTransform(smoothX, [-1, 1], [-10, 10])
+  const glowX = useTransform(smoothX, [-1, 1], [-16, 16])
+  const glowY = useTransform(smoothY, [-1, 1], [-12, 12])
+  const logoShiftX = useTransform(smoothX, [-1, 1], [-10, 10])
+  const logoShiftY = useTransform(smoothY, [-1, 1], [-8, 8])
+
+  const handlePointerMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2
+    pointerX.set(x)
+    pointerY.set(y)
   }
 
-  const handleTouchMove = (e) => {
-    const t = e.touches[0]
-    if (!t || !containerRef.current) return
-    const r = containerRef.current.getBoundingClientRect()
-    mouse.current.x =  ((t.clientX - r.left) / r.width  - 0.5) * 2
-    mouse.current.y = -((t.clientY - r.top)  / r.height - 0.5) * 2
+  const handleTouchMove = (event) => {
+    const touch = event.touches[0]
+    if (!touch) return
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((touch.clientX - rect.left) / rect.width - 0.5) * 2
+    const y = ((touch.clientY - rect.top) / rect.height - 0.5) * 2
+    pointerX.set(x)
+    pointerY.set(y)
   }
 
-  const handleLeave = () => {
-    mouse.current.x = 0
-    mouse.current.y = 0
+  const handlePointerLeave = () => {
+    pointerX.set(0)
+    pointerY.set(0)
   }
 
   return (
     <div
-      ref={containerRef}
-      onMouseMove={handlePointerMove}
-      onMouseLeave={handleLeave}
+      className="hero-3d-stage"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
       onTouchMove={handleTouchMove}
-      style={{
-        width: '100%',
-        height: '100%',
-        borderRadius: '28px',
-        background: 'linear-gradient(145deg, rgba(5,8,20,0.96) 0%, rgba(8,12,28,0.98) 100%)',
-        border: '1px solid rgba(123,182,255,0.18)',
-        boxShadow:
-          '0 0 0 1px rgba(123,182,255,0.06), ' +
-          '0 0 60px rgba(74,159,255,0.08), ' +
-          '0 40px 120px rgba(0,0,0,0.65)',
-        overflow: 'hidden',
-        position: 'relative',
-        isolation: 'isolate',
-      }}
+      onTouchEnd={handlePointerLeave}
     >
-      {/* Radial ambient glow behind scene */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(30,65,130,0.22) 0%, transparent 70%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-
-      <Canvas
-        camera={{ position: [0, 0, 7.5], fov: 50 }}
-        // Cap pixel ratio at 1.5 to balance sharpness vs GPU cost on mobile
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true }}
-        style={{ width: '100%', height: '100%', display: 'block' }}
-      >
-        <Suspense fallback={null}>
-          <Stars
-            radius={45}
-            depth={45}
-            count={700}
-            factor={2.5}
-            saturation={0}
-            fade
-            speed={0.25}
-          />
-          <Scene mouse={mouse} />
-        </Suspense>
-      </Canvas>
+      <motion.div className="hero-ambient-glow" style={{ x: glowX, y: glowY }} />
+      <motion.div className="hero-3d-core" style={{ rotateX, rotateY }}>
+        <div className="hero-core-shadow" />
+        <div className="hero-sphere-glow" />
+        <div className="hero-sphere" />
+        <motion.div
+          className="hero-ring"
+          animate={{ rotateZ: 360 }}
+          transition={{ duration: 38, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div className="hero-logo-field" style={{ x: logoShiftX, y: logoShiftY }}>
+          {TECH_NODES.map(({ name, Logo, color, left, top, z, float, delay }) => (
+            <div key={name} className="hero-logo" style={{ left, top, '--z': z }}>
+              <motion.div
+                className="hero-logo-chip"
+                style={{ boxShadow: `0 12px 32px rgba(0,0,0,0.55), 0 0 18px ${color}30` }}
+                animate={{ y: [0, -6, 0], rotateZ: [0, 3, 0] }}
+                transition={{ duration: float, repeat: Infinity, ease: 'easeInOut', delay }}
+                aria-label={name}
+              >
+                <Logo />
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+      <div className="hero-scanlines" />
     </div>
   )
 }
