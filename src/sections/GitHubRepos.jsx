@@ -73,7 +73,7 @@ function RepoCard({ repo, index, inView }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, delay: 0.1 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -6 }}
-      className="glass-card group block p-6 transition-all duration-300 hover:border-[rgba(255,255,255,0.16)]"
+      className="glass-card group block p-5 sm:p-6 transition-all duration-300 hover:border-[rgba(255,255,255,0.16)]"
     >
       {/* Hover glow */}
       <div className="absolute inset-0 rounded-[22px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"

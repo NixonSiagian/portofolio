@@ -184,7 +184,7 @@ function TechCard({ tech, index, inView }) {
         transition: tilt.x === 0 ? 'transform 0.5s ease' : 'transform 0.1s ease',
       }}
     >
-      <div className="tech-card p-5 h-full group relative">
+      <div className="tech-card p-4 sm:p-5 h-full group relative">
         {/* Ambient glow on hover */}
         <div
           className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -197,23 +197,23 @@ function TechCard({ tech, index, inView }) {
         />
 
         <div className="relative z-10">
-          <div className="w-12 h-12 mb-4">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4">
             <tech.Logo />
           </div>
 
-          <h3 className="font-display font-bold text-base mb-0.5" style={{ color: 'var(--text-1)' }}>
+          <h3 className="font-display font-bold text-sm sm:text-base mb-0.5" style={{ color: 'var(--text-1)' }}>
             {tech.name}
           </h3>
-          <p className="font-body text-[11px] uppercase tracking-wide mb-4" style={{ color: 'var(--text-3)' }}>
+          <p className="font-body text-[10px] uppercase tracking-wide mb-3 sm:mb-4" style={{ color: 'var(--text-3)' }}>
             {tech.category}
           </p>
 
-          <div className="mb-3">
+          <div className="mb-2.5">
             <div className="flex justify-between items-center mb-1.5">
-              <span className="font-body text-[11px]" style={{ color: 'var(--text-3)' }}>{tech.level}</span>
-              <span className="font-body text-[11px]" style={{ color: 'var(--text-3)' }}>{tech.years}yr{tech.years > 1 ? 's' : ''}</span>
+              <span className="font-body text-[10px]" style={{ color: 'var(--text-3)' }}>{tech.level}</span>
+              <span className="font-body text-[10px]" style={{ color: 'var(--text-3)' }}>{tech.years}yr{tech.years > 1 ? 's' : ''}</span>
             </div>
-            <div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)' }}>
+            <div className="h-1.5 sm:h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)' }}>
               <motion.div
                 className="h-full rounded-full"
                 initial={{ width: 0 }}
@@ -229,7 +229,7 @@ function TechCard({ tech, index, inView }) {
               className="w-1.5 h-1.5 rounded-full"
               style={{ background: tech.color, boxShadow: `0 0 8px ${tech.color}` }}
             />
-            <span className="font-body text-[10px] tracking-[0.12em] uppercase" style={{ color: 'var(--text-3)' }}>
+            <span className="font-body text-[9px] tracking-[0.12em] uppercase" style={{ color: 'var(--text-3)' }}>
               Proficient
             </span>
           </div>
@@ -245,7 +245,7 @@ export default function TechStack() {
 
   return (
     <section id="stack" className="section-pad-tight section-pad-offset" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
 
           <motion.div
@@ -269,12 +269,12 @@ export default function TechStack() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-semibold mb-10"
-              style={{ fontSize: 'clamp(2rem, 3.9vw, 3rem)', color: 'var(--text-1)' }}
+              style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', color: 'var(--text-1)' }}
             >
               Core Capabilities
             </motion.h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
               {TECHS.map((tech, index) => (
                 <TechCard key={tech.name} tech={tech} index={index} inView={inView} />
               ))}
