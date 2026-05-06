@@ -1,78 +1,11 @@
 import { motion } from 'framer-motion'
+import HeroScene from './HeroScene'
 
 const FADE_UP = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
 })
-
-const DASHBOARD_STATS = [
-  { label: 'Deploy success', value: '99.8%', width: '92%', color: '#7BB6FF' },
-  { label: 'Latency', value: '12ms', width: '78%', color: '#D5B98A' },
-  { label: 'Pipeline health', value: 'Stable', width: '86%', color: '#A78BFA' },
-]
-
-function HeroDashboard() {
-  return (
-    <div className="premium-mesh relative w-full h-full">
-      <div className="grid-overlay opacity-20 z-0" />
-      <div className="absolute inset-0 z-10 flex flex-col justify-between p-5 sm:p-7">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="font-body text-[10px] sm:text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--text-3)' }}>
-              Developer Console
-            </p>
-            <p className="font-display font-semibold text-lg sm:text-xl mt-1" style={{ color: 'var(--text-1)' }}>
-              Realtime Systems
-            </p>
-          </div>
-          <span
-            className="font-body text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-full"
-            style={{ color: '#4ade80', border: '1px solid rgba(74,222,128,0.35)', background: 'rgba(74,222,128,0.08)' }}
-          >
-            Live
-          </span>
-        </div>
-
-        <div className="space-y-3.5">
-          {DASHBOARD_STATS.map((stat, index) => (
-            <div key={stat.label}>
-              <div className="flex items-center justify-between text-[11px] sm:text-xs mb-1.5">
-                <span className="font-body" style={{ color: 'var(--text-2)' }}>{stat.label}</span>
-                <span className="font-display font-semibold" style={{ color: stat.color }}>{stat.value}</span>
-              </div>
-              <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
-                <motion.div
-                  className="h-full rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: stat.width }}
-                  transition={{ duration: 1.2, delay: 0.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ background: `linear-gradient(90deg, ${stat.color}88, ${stat.color})` }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="glass px-4 py-3 rounded-2xl">
-          <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em]" style={{ color: 'var(--text-3)' }}>
-            <span>Active Build</span>
-            <span style={{ color: 'var(--accent)' }}>v2.6</span>
-          </div>
-          <div className="mt-2 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full" style={{ background: '#7FE2B4', boxShadow: '0 0 10px rgba(127,226,180,0.6)' }} />
-            <span className="font-mono text-xs" style={{ color: 'var(--text-1)' }}>
-              deploy@main
-            </span>
-          </div>
-          <p className="font-body text-[11px] mt-1" style={{ color: 'var(--text-3)' }}>
-            Release pipeline synced · 2m ago
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function Hero() {
   return (
@@ -181,14 +114,14 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: 3D scene */}
+          {/* Right: 3D holographic scene */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="relative h-[38vh] sm:h-[50vh] lg:h-[72vh] w-full max-w-full"
           >
-            <HeroDashboard />
+            <HeroScene />
           </motion.div>
 
         </div>
