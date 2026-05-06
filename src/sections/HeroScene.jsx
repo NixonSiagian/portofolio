@@ -88,8 +88,7 @@ const TECH_NODES = [
   { name: 'C++', Logo: CppIcon, color: '#00599C', left: '84%', top: '54%', z: 65 },
 ]
 
-const FLOAT_DURATION = 6.2
-const FLOAT_STEP = 0.35
+const FLOAT_DURATION = 6.8
 const FLOAT_DELAY_BASE = 0.1
 const FLOAT_DELAY_STEP = 0.08
 
@@ -156,7 +155,7 @@ export default function HeroScene() {
                 style={{ boxShadow: `0 12px 32px rgba(0,0,0,0.55), 0 0 18px ${color}30` }}
                 animate={{ y: [0, -6, 0], rotateZ: [0, 3, 0] }}
                 transition={{
-                  duration: FLOAT_DURATION + index * FLOAT_STEP,
+                  duration: FLOAT_DURATION,
                   repeat: Infinity,
                   ease: 'easeInOut',
                   delay: FLOAT_DELAY_BASE + index * FLOAT_DELAY_STEP,

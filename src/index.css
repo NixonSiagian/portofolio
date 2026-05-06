@@ -166,8 +166,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), transparent 55%);
-  opacity: 0.55;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 55%);
   mix-blend-mode: screen;
   pointer-events: none;
   z-index: 1;
@@ -265,7 +264,7 @@ body {
   height: 150%;
   border-radius: 50%;
   --ring-inner: 60%;
-  --ring-thickness: 2%;
+  --ring-thickness: clamp(2px, 1.8%, 8px);
   --ring-outer: calc(var(--ring-inner) + var(--ring-thickness));
   --ring-mask: radial-gradient(transparent var(--ring-inner), #000 var(--ring-outer));
   background: conic-gradient(from 90deg, rgba(123, 182, 255, 0), rgba(123, 182, 255, 0.55), rgba(213, 185, 138, 0.35), rgba(123, 182, 255, 0));
