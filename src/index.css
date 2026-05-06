@@ -31,7 +31,6 @@ body {
     radial-gradient(920px 560px at 12% 8%, rgba(68, 82, 122, 0.22), transparent 60%),
     radial-gradient(760px 480px at 88% 20%, rgba(73, 102, 150, 0.18), transparent 60%),
     radial-gradient(640px 440px at 60% 86%, rgba(114, 88, 140, 0.14), transparent 60%),
-    radial-gradient(540px 360px at 30% 55%, rgba(213, 185, 138, 0.08), transparent 65%),
     var(--bg);
   color: var(--text-1);
   font-family: 'Inter', sans-serif;
